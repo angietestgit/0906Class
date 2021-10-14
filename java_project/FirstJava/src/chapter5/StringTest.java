@@ -24,7 +24,7 @@ public class StringTest {
 				
 		int index = str2.indexOf("-");
 		
-		System.out.println(str2.deleteCharAt(index));		
+		System.out.println("\n"+str2.deleteCharAt(index));		
 	}
 
 }
