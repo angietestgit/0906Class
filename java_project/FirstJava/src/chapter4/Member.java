@@ -3,6 +3,10 @@ package chapter4;
 import java.util.Calendar;
 import java.util.Scanner;
 
+//10.13 수 대면
+// 독감, 예방접종 퀴즈 내가 한거 + 선생님이 한거
+// + 수업 내용 짬뽕
+
 public class Member {
 	
 	String name; //인스턴스변수
