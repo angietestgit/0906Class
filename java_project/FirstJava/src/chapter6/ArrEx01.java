@@ -52,6 +52,44 @@ public class ArrEx01 {
 
 	public static void main(String[] args) {
 
+		// 2차원배열의 shift 퀴즈풀이
+		int[][] arr1 = {
+				{1,2,3},
+				{4,5,6},
+				{7,8,9},
+				{10,11,12}
+		};
+		
+		//출력
+		for(int i=0; i<arr1.length; i++) {
+			for(int j=0; j<arr1[i].length; j++) {
+				System.out.print(arr1[i][j]+"\t");
+			}
+			System.out.println();
+		}
+		//////////////////////////////////////////////////
+		// 행의 시프트
+		
+		//임시배열 선언
+		int[] temp = arr1[arr1.length-1];
+		
+		for(int i=arr1.length-1; i>0; i--) {
+			arr1[i] = arr1[i-1];
+		}
+		
+		arr1[0] = temp;
+		/////////////////////////////////////////////////
+		System.out.println("행의 시프트");
+		//출력
+		for(int i=0; i<arr1.length; i++) {
+			for(int j=0; j<arr1[i].length; j++) {
+				System.out.print(arr1[i][j]+"\t");
+			}
+			System.out.println();
+		}
+		
+		System.out.println("============================");
+		
 		//배열 생성
 		int[] arr = {100, 240, 180, 60, 150, 90, 30, 200};
 		int[] arr2 = {100, 240, 200};
@@ -59,6 +97,59 @@ public class ArrEx01 {
 		System.out.println("최대값: "+maxValue(arr));
 		System.out.println("최소값: "+minValue(arr2));
 		
+		// 2차원 배열의 선언
+		int[][] arr3 = {
+				{1, 2, 3},
+				{4, 5, 6, 7},
+				{8,9,10,11,12,13} //가변배열
+		};
+		System.out.println("2차원 배열 출력");
+		addOneDArr(arr3, 100);
 		
+		System.out.println("=============================");
+		// for-each문
+		for(int i=0; i<arr.length; i++) {
+			System.out.println("arr[i]");
+		}
+		System.out.println("=============================");
+		for(int num : arr) { // 각요소를 변경할 떄 안쓰고 참조에서 읽어올 때만 포이치문 사용
+			System.out.println(num);
+		}
+	}
+	
+	public static void addOneDArr(int[][] arr, int add) {
+		
+		//2차원 배열의 출력
+		// 행
+		for(int i=0; i<arr.length; i++) {
+			// 열
+			for(int j=0; j<arr[i].length; j++) {
+				System.out.print(arr[i][j]+ "\t");
+				
+			}
+			System.out.println();
+		}
+		
+		// 매개변수로 전달 받은 숫자를 각 요소에 더해준다.
+		for(int i=0; i<arr.length; i++) {
+			// 열
+			for(int j=0; j<arr[i].length; j++) {
+				arr[i][j] += add;
+			}
+		}
+		
+		
+		System.out.println("각 요소에 숫자를 더하기=====");
+		
+		//2차원 배열의 출력
+		// 행
+		for(int i=0; i<arr.length; i++) {
+			// 열
+			for(int j=0; j<arr[i].length; j++) {
+				System.out.print(arr[i][j]+ "\t");
+				
+			}
+			System.out.println();
+		}
 	}
 }
