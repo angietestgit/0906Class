@@ -1,8 +1,6 @@
 package chpater7_2;
 
-
-// 추상클래스
-public class abstract Friend2 {
+public class Friend {
 	
 	// 개인 정보 관리 프로그램
 	// 정보를 저장하는 변수
@@ -11,7 +9,7 @@ public class abstract Friend2 {
 	String address;
 	
 	// 저장 데이터의 초기화: 생성자
-	public Friend2(String name, String phoneNumber, String address) {
+	public Friend(String name, String phoneNumber, String address) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
@@ -25,19 +23,6 @@ public class abstract Friend2 {
 	}
 	
 	// 오버라딩 목적으로하는 메소드
-	// public void showBasicInfo() {}
-	// 추상 메소드 : 처리 블록이 없다!, 미완성된 메소드, 상속을 통해 완성시켜야하는 메소드
-	public abstract void showBasicInfo();
+	public void showBasicInfo() {}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
