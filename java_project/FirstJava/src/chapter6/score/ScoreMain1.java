@@ -16,12 +16,12 @@ public class ScoreMain1 {
 		manager.showAllData();
 		
 		// 3. 데이터 검색
-		manager.searchData("손흥민");
-		manager.searchData("이강인");
+//		manager.searchData("손흥민");
+//		manager.searchData("이강인");
 		
 		// 4. 데이터 삭제
-		manager.deleteScore("SCOTT");
-		manager.deleteScore("이강인");
+//		manager.deleteScore("SCOTT");
+//		manager.deleteScore("이강인");
 		
 		// 5. 데이터 검색 또는 전체 데이터 출력
 		manager.showAllData();

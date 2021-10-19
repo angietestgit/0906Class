@@ -1,9 +1,16 @@
 package chapter6.score;
 
+import java.util.Scanner;
+
 public class ScoreManager {
 	
 	// 배열을 가지고 있고.
 	// 배열의 요소를 추가, 검색, 삭제 기능
+	
+	public static final Scanner sc = new Scanner(System.in);;
+	
+	private
+	
 	
 	private Student[] score;
 	private int numOfStudent;
@@ -41,6 +48,8 @@ public class ScoreManager {
 	// 데이터 검색 : 이름 기준 검색 -> 배열의 요소 들중 이름(검색어)을 비교
 	public void searchData(String name) {
 	
+		System.out.println("검색하고자하는 학생의 이름을 입력해주세요.");
+		
 		// -1 또는 배열 범위 안의 정수 0~N-1
 		int index = searchIndex(name);
 		
@@ -102,5 +111,27 @@ public class ScoreManager {
 		
 		return index;
 	}
+	
+	// 학생 정보를 저장하고 -> 배열에 저장하는 메소드
+	public void insertStudent() {
+		
+		System.out.println("학생 성적 데이터를 입력합니다.");
+		System.out.println("이름> ");
+		String name = sc.nextLine();
+		System.out.println("국어 점수> ");
+		int scoreKor = Integer.parseInt(sc.nextLine());
+		System.out.println("영어 점수> ");
+		int scoreEng = Integer.parseInt(sc.nextLine());
+		System.out.println("수학 점수> ");
+		int scoreMath = Integer.parseInt(sc.nextLine());
+		
+		// Student 객체 생성 -> 배열에 저장
+		insertScore(new Student(name, scoreKor, scoreEng, scoreMath));
+		System.out.println("성적 데이터가 입력되었습니다.");
+		
+	}
+	
+	
+	
 
 }
