@@ -1,4 +1,4 @@
-package JavaTest;
+package JavaTest.Person_pkg;
 
 //1.Person 이라는 클래스를 정의해봅시다.
 //	①이름을 저장하는 변수, 주민등록번호를 저장하는 변수를 정의해봅시다.
