@@ -1,5 +1,10 @@
 --1 마당서점의고객이요구하는다음질문에대해SQL 문을작성하시오.
 --
+-- 시작하기전에 테이블 한번 보고가면 좋음!
+SELECT *
+--FROM CUSTOMER
+FROM BOOK
+;
 --(1) 도서번호가1인도서의이름
 SELECT bookname
 FROM book
@@ -13,10 +18,6 @@ WHERE price >= 20000
 ;
 
 --(3) 박지성의총구매액(박지성의고객번호는1번으로놓고작성)
-SELECT totalmoney
-FROM customer
-WHERE customerid = 1
-;
 
 
 --(4) 박지성이구매한도서의수(박지성의고객번호는1번으로놓고작성)

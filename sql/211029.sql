@@ -78,8 +78,8 @@ WHERE mgr is null
 -- 급여 및 커미션을 기준으로 내림차순 정렬하여 표시하시오.
 SELECT ename, sal, comm
 FROM emp
-WHERE comm is not null
-ORDER BY sal, comm desc
+WHERE comm is not null and comm>0
+ORDER BY sal desc, comm desc
 ;
 --​
 --
@@ -94,7 +94,8 @@ WHERE ename like '__R%'
 
 SELECT ename
 FROM emp
-WHERE ename like '%A%E%'
+-- 내가한거 근데 이거 아님! WHERE ename like '%A%E%'
+WHERE ename like '%A%' AND ename like '%E%'
 ;
 
 --14. 담당업무가 CLERK, 또는 SALESMAN이면서 급여가 $1600, $950
@@ -102,7 +103,8 @@ WHERE ename like '%A%E%'
 
 SELECT ename, job, sal
 FROM emp
-WHERE (job='CLERK' OR job='SALESMAN') AND sal NOT IN(1600,950,1300)
+--내가 한거 WHERE (job='CLERK' OR job='SALESMAN') AND sal NOT IN(1600,950,1300)
+WHERE (job IN('CLERK','SALESMAN')) AND sal NOT IN(1600,950,1300)
 ;
 
 -- 15. 커미션이 $500 이상인 사원의 이름과 급여 및 커미션을 출력하시오.
