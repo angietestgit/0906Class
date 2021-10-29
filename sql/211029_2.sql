@@ -31,11 +31,30 @@ WHERE price >= 20000
 --(2) 마당서점에도서를출고하는출판사의총개수
 --
 --(3) 모든고객의이름, 주소
+select custname, address
+FROM customer
+;
 --
 --(4) 2014년7월4일~7월7일사이에주문받은도서의주문번호
---
+SELECT orerid
+FROM orders
+WHERE orderdate BETWEEN '14/07/04' AND '14/07/07'
+;
+
 --(5) 2014년7월4일~7월7일사이에주문받은도서를제외한도서의주문번호
---
+SELECT orderid
+FROM orders
+WHERE orderdate not BETWEEN '14/07/04' AND '14/07/07'
+;
+
 --(6) 성이‘김’씨인고객의이름과주소
---
+SELECT name, address
+FROM customer
+WHERE name LIKE '김%'
+;
+
 --(7) 성이‘김’씨이고이름이‘아’로끝나는고객의이름과주소
+SELECT name, address
+FROM suctomer
+WHERE nema like '김%아'
+;
