@@ -32,8 +32,9 @@ WHERE custid=1
 --
 --2 마당서점의운영자와경영자가요구하는다음질문에대해SQL 문을작성하시오.
 --
---(1) 마당서점도서의총개수
-SELECT COUNT(bookid)
+--(1) 마당서점도서의총개수 --> 도서테이블 로우(행)의 개수
+--SELECT COUNT(bookid)
+SELECT COUNT(*)
 FROM book
 ;
 
