@@ -28,17 +28,17 @@ SELECT * FROM pb_b01;
 SELECT * FROM phoneinfo_univ;
 
 INSERT INTO phoneinfo_univ
-VALUES(1, '전공1', 1, 1);
+VALUES(1, '정보', 1, 1);
 INSERT INTO phoneinfo_univ
-VALUES(2, '전공2', 2, 2);
+VALUES(2, '통계', 2, 2);
 SELECT * FROM phoneinfo_univ;
 
 UPDATE phoneinfo_univ
 SET fr_u_year='3'
 WHERE idx=1;
-SELECT * FROM phoneinfo_univ;
+SELECT * FROM phoneinfo_univ WHERE idx=2;
 
-DELETE FROM phoneinfo_univ WHERE idx=1;
+DELETE FROM phoneinfo_univ WHERE idx=2;
 SELECT * FROM phoneinfo_univ;
 
 --3. phoneinfo_com 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
