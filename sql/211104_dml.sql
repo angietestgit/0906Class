@@ -66,3 +66,7 @@ DELETE FROM phoneinfo_com WHERE idx=1;
 SELECT * FROM phoneinfo_com;
 
 COMMIT;
+
+DELETE FROM phoneinfo_basic;
+DELETE FROM phoneinfo_univ;
+DELETE FROM phoneinfo_com;
