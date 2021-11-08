@@ -130,13 +130,19 @@ DELETE FROM phoneinfo_basic WHERE idx=3;
 
 
 -------------------------------------------
+--sequence
+CREATE sequence pic_idx_seq;
+
+
+
 -- insert
 SELECT idx FROM phoneinfo_basic;
 INSERT INTO phoneinfo_basic
-    VALUES(4, '황의조', '010-2222-1111', 'h@gmail.com', 'SEOUL', sysdate);
+    VALUES(PIB_IDX_SEQ.nextval, '황의조', '010-2222-1111', 'h@gmail.com', 'SEOUL', sysdate);
 DESC phoneinfo_com;
 INSERT INTO phoneinfo_com
-    VALUES(1, 'NAVER', 4);
+    VALUES(pic_idx_seq.nextval, 'NAVER', PIB_IDX_SEQ.nextval);
+
 
 -- 회사 친구 입력 : 기본 정보 입력 -> 회사 정보 입력
 
