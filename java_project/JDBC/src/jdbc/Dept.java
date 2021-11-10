@@ -16,12 +16,11 @@ public class Dept {
 	}	
 	
 	// 기본 생성자: Beans 클래스 생성시 반드시 기본 생성자가 있어야 한다!!!
-	
+	public Dept() {}
+
 	// VO : 읽기전용  value object, getter 메소드만 존재
 	// DTO : 읽고 쓰기 가능, getter/setter
 	
-	public Dept() {}
-
 	public int getDeptno() {
 		return deptno;
 	}
