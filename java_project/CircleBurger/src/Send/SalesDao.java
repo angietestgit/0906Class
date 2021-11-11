@@ -103,8 +103,10 @@ public class SalesDao {
 		// sql : select
 		// 2. 해당 ?(상품이름) 필요재료를 재고에서 차감
 		String sql = "update ingredient i1 set ingre_stock = ingre_stock - ingre_need where i1.s_id = (select s_id from sales s1 where s1.s_name = '?')";
+		
 		if (outOfStock(conn, sales.getProductId())) {
 			System.out.println("재고가 없어 주문할 수 없습니다.");
+			
 		} else {
 
 			try {
