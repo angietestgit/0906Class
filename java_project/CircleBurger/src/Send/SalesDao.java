@@ -61,8 +61,7 @@ public class SalesDao {
 
 		// sql : select
 		// 1. 해당 ? (상품이름)에 대해 재고에서 해당 상품에 들어가는 재고를 뺀 결과를 보내줌(Java 의 ResultSet에 저장용)
-		String sql = "select ingre_stock-ingre_need from "
-				+ "(select *from sales s1 natural join ingredient where s1.s_name = '?')";
+		String sql = "select ingre_stock-ingre_need from (select * from sales s1 natural join ingredient where s1.s_name = '?')";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -103,7 +102,7 @@ public class SalesDao {
 
 		// sql : select
 		// 2. 해당 ?(상품이름) 필요재료를 재고에서 차감
-		String sql = "update ingredient i1 set ingre_stock = ingre_stock - ingre_need where i1.s_id =  (select s_id from sales s1 where s1.s_name = '?' );";
+		String sql = "update ingredient i1 set ingre_stock = ingre_stock - ingre_need where i1.s_id = (select s_id from sales s1 where s1.s_name = '?')";
 		if (outOfStock(conn, sales.getProductId())) {
 			System.out.println("재고가 없어 주문할 수 없습니다.");
 		} else {
