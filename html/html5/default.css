@@ -1,0 +1,9 @@
+
+/*
+선택자로 선택하고 스타일을 적용
+*/
+
+h1{
+    color:gold;
+    background-color: #009688;
+}
