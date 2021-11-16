@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<e:DomainDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:e="http://exerd.tomato.com/model" UUID="DDefinition_Lk11sEEgEeyVRq6yyl6Xkw" productId="com.tomato.db.db2" version="2.5.12.20210616-1543">
+  <domain UUID="Domain_Lk11sUEgEeyVRq6yyl6Xkw" name="문자" suggestedDataType="VARCHAR(255)">
+    <domain UUID="Domain_Lk11skEgEeyVRq6yyl6Xkw" name="주민등록번호" suggestedDataType="VARCHAR(13)"/>
+    <domain UUID="Domain_Lk11s0EgEeyVRq6yyl6Xkw" name="주소"/>
+    <domain UUID="Domain_Lk11tEEgEeyVRq6yyl6Xkw" name="주소2" suggestedDataType="VARCHAR(40)"/>
+    <domain UUID="Domain_Lk11tUEgEeyVRq6yyl6Xkw" name="웹주소"/>
+    <domain UUID="Domain_Lk11tkEgEeyVRq6yyl6Xkw" name="전화번호" suggestedDataType="VARCHAR(30)"/>
+    <domain UUID="Domain_Lk11t0EgEeyVRq6yyl6Xkw" name="이메일" suggestedDataType="VARCHAR(40)"/>
+    <domain UUID="Domain_Lk11uEEgEeyVRq6yyl6Xkw" name="이름" suggestedDataType="VARCHAR(50)"/>
+  </domain>
+  <domain UUID="Domain_Lk11uUEgEeyVRq6yyl6Xkw" name="숫자" suggestedDataType="INTEGER">
+    <domain UUID="Domain_Lk11ukEgEeyVRq6yyl6Xkw" name="금액"/>
+  </domain>
+  <domain UUID="Domain_Lk11u0EgEeyVRq6yyl6Xkw" name="일시" suggestedDataType="DATE"/>
+  <domain UUID="Domain_Lk11vEEgEeyVRq6yyl6Xkw" name="객체" suggestedDataType="BLOB">
+    <domain UUID="Domain_Lk11vUEgEeyVRq6yyl6Xkw" name="이미지" suggestedDataType="LONG VARGRAPHIC"/>
+    <domain UUID="Domain_Lk11vkEgEeyVRq6yyl6Xkw" name="오디오" suggestedDataType="BLOB"/>
+  </domain>
+  <domain UUID="Domain_Lk11v0EgEeyVRq6yyl6Xkw" name="마당서적">
+    <domain UUID="Domain_Lk11wEEgEeyVRq6yyl6Xkw" name="마당_숫자">
+      <domain UUID="Domain_Lk11wUEgEeyVRq6yyl6Xkw" name="번호" suggestedDataType="NUMBER(10)"/>
+      <domain UUID="Domain_Lk11wkEgEeyVRq6yyl6Xkw" name="판매금액" suggestedDataType="NUNBER(6)"/>
+      <domain UUID="Domain_Lk11w0EgEeyVRq6yyl6Xkw" name="단가" suggestedDataType="NUMBER(6)"/>
+    </domain>
+    <domain UUID="Domain_Lk11xEEgEeyVRq6yyl6Xkw" name="마당_문자">
+      <domain UUID="Domain_Lk11xUEgEeyVRq6yyl6Xkw" name="마당_이름" suggestedDataType="VARCHAR2(40)"/>
+      <domain UUID="Domain_Lk11xkEgEeyVRq6yyl6Xkw" name="마당_주소" suggestedDataType="VARCHAR2(40)"/>
+      <domain UUID="Domain_Lk11x0EgEeyVRq6yyl6Xkw" name="마당_전화" suggestedDataType="VARCHAR2(40)"/>
+    </domain>
+    <domain UUID="Domain_Lk11yEEgEeyVRq6yyl6Xkw" name="마당_날짜">
+      <domain UUID="Domain_Lk2cwEEgEeyVRq6yyl6Xkw" name="일자" suggestedDataType="TIMESTAMP"/>
+    </domain>
+  </domain>
+</e:DomainDefinition>

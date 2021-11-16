@@ -1,0 +1,347 @@
+package kioskProjectTest2;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class Jdbc_SalesDAO {
+
+	private Jdbc_SalesDAO() {
+	}
+
+	// 클래스 내부에서 인스턴스 생성
+	private static Jdbc_SalesDAO dao = new Jdbc_SalesDAO();
+
+	// 내부에서 만들어진 인스턴스를 특정 메소드를 이용해서 받을 수 있도록 함
+	static public Jdbc_SalesDAO getInstance() {
+		return dao;
+	}
+
+	public List<VO_Sales> recoHamburgerForAll() {
+		String sql = SQLQuery.showRecommended;
+
+		Connection conn = null;
+		ResultSet rs = null;
+		Statement stm = null;
+
+		List<VO_Sales> salesList = new LinkedList<VO_Sales>();
+
+		try {
+			conn = Jdbc_ConPrivider.getConnection();
+			stm = conn.createStatement();
+
+			rs = stm.executeQuery(sql);
+
+			while (rs.next()) {
+
+				VO_Sales sales = new VO_Sales(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+						rs.getString(5), 1);
+
+				salesList.add(sales);
+			}
+
+		} catch (SQLException e) {
+
+		} finally {
+			Jdbc_Closer.close(rs);
+			Jdbc_Closer.close(stm);
+			Jdbc_Closer.close(conn);
+		}
+
+		return salesList;
+	}
+	
+	// 고령자에 안성맞춤인 햄버거 메뉴 출력
+	public List<VO_Sales> showRecoForTheOld(Connection conn) {
+		String sql = SQLQuery.showHamburgerForTheOld;
+
+		ResultSet rs = null;
+		Statement stm = null;
+
+		List<VO_Sales> salesList = new LinkedList<VO_Sales>();
+
+		try {
+			
+			stm = conn.createStatement();
+			rs = stm.executeQuery(sql);
+
+			while (rs.next()) {
+
+				VO_Sales sales = new VO_Sales(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+						rs.getString(5), 1);
+
+				salesList.add(sales);
+			}
+
+		} catch (SQLException e) {
+			System.err.println("일시적인 오류입니다.");
+
+		} finally {
+			Jdbc_Closer.close(rs);
+			Jdbc_Closer.close(stm);
+		
+		}
+
+		return salesList;
+	}
+	
+	
+
+	// 2. outOfStock() : Connector , VO_Sales 객체를 매개변수로 받아
+	// 매개변수 VO_Sales 상품에 들어가는 재료가 있는지 확인하고 충분하지 않다면 true반환
+	public boolean outOfStock(VO_Sales sales) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		// sql : select
+		// 1. 해당 ? (상품이름)에 대해 재고에서 해당 상품에 들어가는 재고를 뺀 결과를 보내줌(Java 의 ResultSet에 저장용)
+		String sql = "select ingre_stock-ingre_need from (select * from sales s1 natural join ingredient where s1.s_name = ?)";
+
+		try {
+			conn = Jdbc_ConPrivider.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sales.getProductName());
+
+			rs = pstmt.executeQuery();
+
+			// 매개변수 VO_Sales 상품에 들어가는 재료가 있는지 확인하고 충분하지 않다면 true반환
+			while (rs.next()) {
+				boolean check = false;
+
+				if (rs.getInt(1) < 0) {
+					check = true;
+					break;
+				}
+
+				return check;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("일시적인 오류입니다.");
+		} finally {
+			Jdbc_Closer.close(rs);
+			Jdbc_Closer.close(pstmt);
+			Jdbc_Closer.close(conn);
+
+		}
+
+		return false;
+	}
+
+	// 3. recieveOrder() : VO_Sales 객체를 매개변수로 받아 해당 상품의 재료가 재고에 충분한지 확인 후
+	// 충분하다면 재고에서 필요 재료수만큼 재료 차감 (outOfStock 반환값이 true 일시 실행)
+	public boolean recieveOrder(VO_Sales sales) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		boolean result =false;
+
+		// sql : select
+		// 2. 해당 ?(상품이름) 필요재료를 재고에서 차감
+		String sql = "update ingredient i1 set ingre_stock = ingre_stock - ingre_need*? where i1.s_id = (select s_id from sales s1 where s1.s_name = ?)";
+
+		if (outOfStock(sales)) {
+			System.err.println("재고가 없어 주문할 수 없습니다.");
+			result = true;
+			
+
+		} else {
+
+			try {
+				conn = Jdbc_ConPrivider.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, sales.getQuantity());
+				pstmt.setString(2, sales.getProductName());
+				pstmt.executeQuery();
+				
+				
+
+			} catch (SQLException e) {
+				System.err.println("일시적인 오류입니다.");
+				e.printStackTrace();
+			} finally {
+				Jdbc_Closer.close(pstmt);
+				Jdbc_Closer.close(conn);
+			}
+
+		}
+		return result;
+	}
+
+	// 해당 타입을 가진 버거를 모아 List로 반환
+
+	public List<VO_Sales> sendBurgerByType(String type) {
+		String sql = null;
+		if (type.contains("Chicken") || type.contains("Shrimp")) {
+			sql = "select * from sales where s_type = 'Chicken' or s_type = 'Shrimp' ";
+		} else if (type.contains("Bulgogi") || type.contains("Etc")) {
+			sql = "select * from sales where s_type = 'Bulgogi' or s_type = 'Etc' ";
+		} else if (type.equals("Signature")) {
+			sql = "select * from sales where s_type = 'Signature' ";
+		} else if (type.equals("Beef")) {
+			sql = "select * from sales where s_type = 'Beef' ";
+		}
+
+		Connection conn = null;
+		ResultSet rs = null;
+		Statement stm = null;
+		List<VO_Sales> burgersByType = new LinkedList<VO_Sales>();
+		try {
+			conn = Jdbc_ConPrivider.getConnection();
+			stm = conn.createStatement();
+			rs = stm.executeQuery(sql);
+
+			while (rs.next()) {
+				VO_Sales sales = new VO_Sales(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+						rs.getString(5), 0);
+				burgersByType.add(sales);
+
+			}
+
+		} catch (SQLException e) {
+
+		} finally {
+			Jdbc_Closer.close(rs);
+			Jdbc_Closer.close(stm);
+			Jdbc_Closer.close(conn);
+
+		}
+		return burgersByType;
+	}
+
+	// 상품명을 매개변수로 받아 그 상품이름을 가진 상품 하나를 반환
+	public VO_Sales sendSalesByName(String s_name) {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		VO_Sales sales = null;
+
+		String sql = "select * from sales where s_name = ? ";
+
+		try {
+			conn = Jdbc_ConPrivider.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, s_name);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+
+				sales = new VO_Sales(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getString(5), 1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.println("일시적인 오류입니다.");
+		} finally {
+			Jdbc_Closer.close(rs);
+			Jdbc_Closer.close(pstmt);
+			Jdbc_Closer.close(conn);
+		}
+
+		return sales;
+	}
+
+	
+	public List<VO_Sales> sendDrinkListByChoice(Connection conn, String drinkType) {
+
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<VO_Sales> list = new LinkedList<VO_Sales>();
+		StringTokenizer tk = new StringTokenizer(drinkType, "/");
+
+		String sql = "select * from sales where s_type = ?";
+
+		try {
+			pstm = conn.prepareStatement(sql);
+			if (drinkType.contains("/")) {
+				while (tk.hasMoreTokens()) {
+					pstm.setString(1, tk.nextToken());
+					rs = pstm.executeQuery();
+					while (rs.next()) {
+						list.add(new VO_Sales(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+								rs.getString(5), 1));
+					}
+				}
+			}else {
+				pstm.setString(1, drinkType);
+				rs = pstm.executeQuery();
+				while(rs.next()) {
+					list.add(new VO_Sales(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+							rs.getString(5), 1));
+				}
+			}
+
+		} catch (SQLException e) {
+			System.err.println("일시적인 오류입니다.");
+		}
+
+		return list;
+
+	}
+
+	// 사이드 메뉴를 list로 만들어 반환
+	public List<VO_Sales> sendSideMenu() {
+		String sql = "select * from sales where s_type = 'Side' ";
+		Connection conn = null;
+		ResultSet rs = null;
+		Statement stm = null;
+		List<VO_Sales> sideList = new LinkedList<VO_Sales>();
+		try {
+			conn = Jdbc_ConPrivider.getConnection();
+			stm = conn.createStatement();
+			rs = stm.executeQuery(sql);
+
+			while (rs.next()) {
+
+				VO_Sales sales = new VO_Sales(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4),
+						rs.getString(5), 1);
+				sideList.add(sales);
+			}
+
+		} catch (SQLException e) {
+
+		} finally {
+			Jdbc_Closer.close(rs);
+			Jdbc_Closer.close(stm);
+			Jdbc_Closer.close(conn);
+		}
+
+		return sideList;
+
+	}
+
+	// 영수증에 들어갈 주문번호를 시퀀스로 생성해서 반환
+
+	public int createTicket() {
+		Connection conn = null;
+		Statement stm = null;
+		ResultSet rs = null;
+
+		String sql = SQLQuery.CreateTicket;
+		int ticketNumber = 0;
+
+		try {
+			conn = Jdbc_ConPrivider.getConnection();
+			stm = conn.createStatement();
+			rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				ticketNumber = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			System.err.println("일시적인 오류입니다.");
+		} finally {
+
+			Jdbc_Closer.close(stm);
+			Jdbc_Closer.close(conn);
+		}
+		return ticketNumber;
+	}
+
+}
