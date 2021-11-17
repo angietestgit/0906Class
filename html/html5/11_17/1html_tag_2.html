@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> <!-- 한글때문에 꼭 써줘야됨! 외워두기! -->
+    <title>Tag</title>
+    <style>
+        div{
+            background-color: darkorange;
+            /* width: 300px; */ /*픽셀단위*/
+        }
+        #div01{  /*아이디속성 지정해줄때 # */
+            width: 300px;
+            height: 100px;
+        }
+        #divin{
+            /* width: 300px; */ /*부모가 가지는 폭size의 100%가져옴. 즉 자동으로 300px 표현. 높이는 지정*/
+            background-color: gold; 
+        }
+
+        span{ /*span이 가지는 특징 확인*/
+            width: 500px;
+            height: 500px;
+            background-color: beige;
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- 비디오-->
+    <video controls width="320" poster="mini1.jpg">  <!--비율은 유지-->
+        <source src = "media/trailer.mp4" type="video/mp4">
+    </video>
+
+    <hr>
+
+    <!-- 오디오-->
+    <audio src="media/old_pop.mp3" controls ></audio>
+
+    <hr>
+    <br>
+    
+    <span>tester-1234</span> <!--인라인형식-->
+    <!-- <div>div</div> -->
+    <img src="mini1.jpg">
+    <span>tester-5678</span>
+
+    <hr>
+
+    <!--div는 공간분할 태그. 표준사이즈만큼 공간을 블럭형식으로 가진다-->
+    <div id = "div01">
+        DIV - 1 
+        <div id = "divin">
+            innder DIV <!-- 부모 div 시작과 같은 사이즈를 가짐 -->
+        </div>
+    </div> 
+    <div id = "div02"> DIV - 2 </div>
+
+    <hr>
+
+    <h1>이미지 태그</h1> <!-- h1만큼의 공간을 가지는 의미-->
+
+
+    <!-- 이지미출력할 때 width는 고정시키는게 좋다! (스크롤 움직이기 번거로우니깐!)-->
+    <img src="images/mini2.png" width="100">
+    <img src="images/mini1.png" alt="미니언즈 이미지가 있었습니다!!!">
+    <img src="mini3.jpg" width="120" height="200"> <br>
+
+    <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png" />
+    <img src="http://placehold.it/300x200" />
+
+    
+</body>
+</html>

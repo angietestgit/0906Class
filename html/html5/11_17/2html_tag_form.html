@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>FORM TAG</title>
+
+    </head>
+
+    <body>
+        <form action="#" method="get">
+
+        <input type="submit">
+        <hr>
+
+        <!--1,4 모양은 다 똑같음. 4번버튼은 근데 액션이 없다는거! 하려면 1번 button해줘야됨-->
+        <input type="button" value="내가 만든 버튼"> <br>
+        <input type="submit" value="로그인/회원가입"> <br>
+        <input type="reset" > <br>
+        <button>전송 </button>
+        <input type="image" src="mini1.jpg"> <!--특정이미지를 버튼으로 만들 수 있음-->
+
+        <hr>
+     
+        입력 폼이 보이지 않는 hidden : <input type="hidden" name="midx" value="11"> <br>
+        파일 첨부 :  <input type="file"> <br>
+        나이 0 <input type="range" min="0" max="150" name="age">150
+
+        tel <input type="tel" name="tel"> <br>
+        url <input type="url" name="url"> <br>
+        숫자 <input type="tel" name=" "> <br>
+        이메일<input type="email" name="email"> <br>
+        <hr>
+
+        <input type="week" name="week"> <br>
+        <input type="month" name="month"> <br>
+        <input type="time" name="time"> <br>
+        <input type="date" name="date"> <br>
+        <!-- <input type="datetime" name="datetime"> datetime => 기능 소멸 <br> -->
+        <input type="datetime-local" name="datetimelocal"> <br> <!--선생님추천.날짜랑 시간이랑 다 들어가서-->
+
+        <hr>
+        type="color" : <input type="color" name="color"> 
+
+        <hr>
+        <!-- radio : 여러 개 중 하나를 선택-->
+        <input type="radio" name="program" value="java"> 자바<br> 
+        <input type="radio" name="program" value="html5"> HTML5<br> 
+        <input type="radio" name="program" value="css3">CSS3<br> 
+        <input type="radio" name="program" value="javascript"> javascript<br> 
+
+
+        <!-- 입력 -->
+        <!--#은 자기 자신--> <!-- action="#" 안써도되면 생략가능-->
+        
+            <!-- <form method="post"> 권장. 아래 get처럼 입력정보가 뜨지 않음! -->
+            <!--<form method="get">은 2html_tag_form.html?username=cool&userid=COOL&pw=123789# -->
+            
+
+            <hr>
+
+               <!-- checkbox 는 여러개 선택을 할 때 사용 -->
+            <input type="checkbox" name="lang" value="ko" > 한글 <br>
+            <input type="checkbox" name="lang" value="en" > 영어 <br>
+
+            <!-- <input type="submit"> -->
+
+            <hr>
+
+            이름 : <input type="text" name="username"> <br> <!--수정페이지 용도-->
+            ID <input name ="userid"> <br>
+            pw <input type="password" name="pw"> <br>
+            
+            <hr>
+
+            
+        </form>
+    </body>
+</html>
