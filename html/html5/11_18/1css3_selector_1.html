@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>기본 선택자</title>
+    <!-- 기본 선택자 스타일-->
+    <style>
+        /* 선택자 {속성이름:속성값;속성이름:속성값} */
+        * {
+            color: red;
+            /* background-color: honeydew; */
+        }
+
+        h1 {
+            background-color: yellowgreen;
+        }
+
+        /* #아이디지정*/
+        #title {
+            font-style: italic;
+        }
+
+        /* 클래스 선택자*/
+        .bold {
+            font-weight: bold;
+        }
+
+        .bold1 {
+            font-weight: lighter;
+        }
+
+        p {
+            color: blueviolet;
+        }
+
+        /* 중복된 태그면 순차적으로 맨 마지막 태그가 보임 */
+
+        /*선택자*/
+        body,
+        h1,
+        p {
+            margin: 0px;
+            /*0px은 여백없음. 기본은 8px. 기본단위를 알려줄때는 써야됨*/
+        }
+
+        /* p{
+            margin: 20px;
+        } */
+
+        #header {
+            width: 300px;
+            height: 100px;
+            background-color: yellow;
+
+            /* margin: 10px 20px 30px 40px; 상하좌우시계방향 top right bottom left*/
+            /* margin: 30px 10px; */
+            margin: 0 auto;
+            /*상하 좌우*/
+        }
+
+        /*div안에 아이디가 contents인거*/
+        div#contents {
+            width: 300px;
+            height: 500px;
+            background-color: orange;
+
+            /* margin: 10px 20px 30px 40px; 상하좌우시계방향 top right bottom left*/
+            /* margin: 30px 10px; */
+            margin: 0 auto;
+            /*상하 좌우*/
+
+        }
+
+        h1.title {
+            color: wheat;
+            font-weight: lighter;
+            background-color: tomato;
+        }
+    </style>
+
+    <!-- 속성 선택자 스타일 (스타일 몇개여도 상관x)-->
+    <style>
+        input[type] {
+            border: 5px solid #000000;
+        }
+
+        input[type=text] {
+            background-color: blue;
+        }
+
+        input[type=password] {
+            background-color: chartreuse;
+        }
+    </style>
+
+    <!-- 범위 한정 선택 : 자손, 후손-->
+    <style>
+        #header1 h1 {
+            background-color: wheat;
+            color: red;
+        }
+
+        #section h1 {
+            color: white;
+        }
+
+        #header>h1 {
+            color: blue;
+            font-weight: bold;
+        }
+
+        /* 동위 선택자 : +(앞 요소 바로 뒤 하나) , ~(뒤 요소 모든요소)*/
+        #head1+h1 {
+            color: cyan;
+        }
+
+        #head1~h2 {
+            color: midnightblue;
+        }
+    </style>
+
+    <!--반응 선택자-->
+    <style>
+        h3:hover{
+            /* 마우스 커서가 특정 요소 위로 올라갔을 때 반응*/
+            color: deepskyblue;
+            background-color: gold;
+        }
+
+        h3:active{
+            color: magenta;
+            background-color: maroon;
+        }
+
+    </style>
+
+    <!-- 상태 선택자-->
+    <style>
+        input:enabled{
+            border: 5px solid #ff0000;
+        }
+
+        input:disabled{
+            background-color: darkgray;
+        }
+
+        input:focus{
+            background-color: orange;
+            border: royalblue;
+        }
+
+        #article{
+            width: 500px;
+            height: 300px;
+
+            overflow: hidden;
+
+        }
+
+        input[type=checkbox]:checked+#article{
+            
+            height: 0px;
+        }
+
+        input[type=checkbox]{
+            display: none;
+        }
+
+        li:nth-child(2n){ /*짝수번째*/
+            background-color: maroon;
+            color: peachpuff;
+        }
+
+        li:nth-child(2n+1){ /*홀수번째*/
+            background-color: aquamarine;
+            color: fuchsia;
+        }
+
+        li:first-child{
+            background-color: gold;
+            color: hotpink;
+            
+            border-radius: 40px 0px 0px 40px;
+        }
+        li:last-child{
+            background-color: lawngreen;
+            color: lightpink;
+
+            border-radius: 0px 40px 40px 0px;
+        }
+
+        /* 리스트 태그를 수평방향으로 나열*/
+        ul{
+            overflow: hidden;
+
+            /* 리스트 스타일 */
+            list-style: none;
+        }
+        li{
+            float: left;
+            padding: 10px 30px; /*상하 좌우*/
+        }
+
+        #photo{
+            border-radius: 50%; /* %는 호를 그려줌*/
+            border: 3px solid gray;
+            width: 50px; /* 이미지 사이즈는 스타일*/
+        }
+
+
+    </style>
+
+    <!-- 링크 선택자 -->
+    <style>
+        a:link{
+            color: green;
+        }
+        a:visited{
+            color: green;
+        }
+        a:hover{
+            color: rgb(0,0,0,);
+            text-decoration: underline;
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+    test
+    <a> 네이버 </a>
+    <a href="test">네이버</a>
+    <a href="https://www.naver.com">NAVER</a>
+
+    <!--이미지 인스타그램 프로필-->
+    <hr>
+    <img id="photo" src="mini3.jpg" alt="">
+
+    <hr>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+
+
+    </ul>
+
+
+    <hr>
+    <!--상태 선택자 버튼check-->
+    <label for="btn">기사 가리기</label> <input id="btn" type="checkbox">
+    <div id="article">
+        <h1>[핵잼 사이언스] “적이다! 공습경보 발령”…꿀벌이 말벌떼 공격 막는 방법 </h1>
+        <p> 토종꿀벌은 말벌떼의 공습을 받으면 불규칙한 비명 같은 경보음으로 동료들을 불러 모은다는 연구 결과가 나왔다.
+
+            미국 웰슬리 칼리지 등 연구진은 베트남에서 한국의 토종벌과 같은 재래꿀벌(Apis cerana)이 날개로 내는 경보음을 기록해 지금까지 알려지지 않았던 특별한 소리를 발견했다.
+            
+            이른바 ‘안티프레데터 파이프’(antipredator pipe)로 명명된 이 소리는 기존 연구에서 ‘쉿쉿’하는 경고 소리나 정지 신호로 짧지만 높은 진동수의 ‘붕붕’대는 소리와 다르게 진동수가 급격하게 변하는 거칠고 불규칙한 소리다.</p>
+    </div>
+
+    <hr>
+    <input> <input disabled>
+
+    <hr>
+    <h3>반응 선택자</h3>
+
+    <hr>
+    <div>  
+        <h1 id="head1">Header1 - 1</h1>
+        <h1>Header1 - 2</h1>
+        <h2>Header2 - 1</h2>
+        <h2>Header2 - 2</h2>
+        <h2>Header2 - 3</h2>
+        <h2>Header2 - 4</h2>
+        <h2>Header2 - 5</h2>
+    </div>
+
+
+
+    <hr>
+    <!-- 후손,자손 선택자-->
+    <div id="header1">
+        <h1 class="title">제목입니다.</h1>
+        <div id="nav">
+            <h1>네비게이션</h1>
+        </div>
+    </div>
+
+    <div id="section">
+        <h1 class="title"> 제목2입니다.</h1>
+        <p>내용이 표현됩니다.</p>
+    </div>
+
+
+    <hr>
+    <!-- 속성 선택자 바디 -->
+    <input type="text"> <input type="password">
+
+    <hr>
+    <!--공간분할-->
+    <div id="header">
+        <h1 class="title">HEADER</h1>
+
+    </div>
+    <div id="contents">
+        <img src="mini1.jpg">
+    </div>
+    <div id="footer"></div>
+
+    <hr>
+    <h1 id="title" class="bold1">[핵잼 사이언스] 길이 6m…바닷속 초희귀 ‘빅핀 오징어’ 포착</h1>
+    <p class="bold">바닷속 심해에 살아 좀처럼 인간에게 모습을 드러내지 않는 희귀 오징어가 카메라에 포착됐다.</p>
+    <p>최근 미 해양대기청(NOAA) 해양탐사팀은 지난 9일(현지시간) 멕시코만 바다 식물을 조사하던 도중 수심 2400m에서 우연히 희귀 오징어인 ‘빅핀 오징어'(bigfin squid)를 목격했다고 밝혔다.
+    </p>
+    <p class="bold1">최근 미 해양대기청(NOAA) 해양탐사팀은 지난 9일(현지시간) 멕시코만 바다 식물을 조사하던 도중 수심 2400m에서 우연히 희귀 오징어인 ‘빅핀 오징어'(bigfin
+        squid)를 목격했다고 밝혔다.
+    </p>
+
+    <h1>footer</h1>
+</body>
+
+</html>
