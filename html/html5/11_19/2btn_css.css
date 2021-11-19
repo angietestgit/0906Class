@@ -1,0 +1,46 @@
+/* *은 전체 */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#btn{
+    width: 300px;
+    height: 150px;
+
+    background-color: orangered;
+
+    margin-top: 100px;
+    margin-left: 200px;
+
+    border: 20px solid silver;
+    border-radius: 40px;
+
+    background-image: url('../mini1.jpg');
+    background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: left;
+    /* background-attachment: fixed; */
+
+}
+
+#btn:hover{
+    border: 20px solid #EEEEEE;
+}
+
+#btn>a{
+    
+    display: block;
+
+    font-size: 300%;
+    font-style: italic;
+    font-weight: bold;
+
+    text-align: center;
+
+    line-height: 150px;
+}
+
+#btn>a:hover{
+    color: snow; /*    display: block;이것때문에 블럭이 hover바뀔수 있었음    */
+}
