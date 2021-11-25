@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        //자바스크립의 변수 특징
+        // 호이스팅-> 변수 선언과 동시에 초기화 하지 않는 경우 자동으로 undefined를 저장
+
+        // 변수 선언 방법 => var 변수 이름(식별자);
+        // var 생명주기
+        // => 함수 단위로 생명주기가 발생
+        // => 함수 밖에서 선언하면 전역 변수가 된다.
+
+        // 변수에 저장하는 데이터 타입 : 숫자, 문자열, bool, 함수, 객체(배열...)
+
+        var num; // 전역 변수
+
+        console.log("num =>", num);
+
+        //함수 호출 (함수는 메모리에 먼저 올라가기 때문에 먼저 호출해도 전역처럼 먼저)
+        fn();
+
+        // 함수정의 : 프로그램이 실행 되기전에 먼저 실행 된다.
+        function fn() {
+            num = 11;
+            var age = 10; //함수 내에서 존재하는 변수
+            console.log('age=>', age);
+            console.log('num=>', num);
+
+            // 상수를 만드는 const => 초기화 후 값을 대입하지 못한다!!!
+            const no = 7;
+            //no = 777;
+
+            // let : 생명주기가 블록({})을 기준으로 생성
+            // for(let i=0; i<5; i++){
+            //     console(i);
+            // }
+            //console.log('for문 바껭서 출력하는 i=>', i);
+        }
+
+        //함수 호출
+        fn();
+
+        //console.log('age=>', age);
+        //console.log('num=>', num);
+
+
+        //alert(111);
+        //alert('<a href="http://www.naver.com">'); /*문자열: ""도 상관x*/
+
+        if (false) {
+            console.log('if=> true');
+        } else {
+            console.log('if=> false');
+        }
+
+        console.log(true);
+        console.log(false);
+        console.log('true>false => 1>0', true > false);
+        // 논리값 true / false
+        // 비교연산(> < >= <= == !=)
+        // 논리연산( && || ! )
+
+        console.log(111);
+        console.log('test');
+        console.log('age:', 11); /*디버깅 데이터 확인*/
+        console.log('errorCode:', 404);
+        console.log(25.123)
+            // 숫자연산을 위한 산술연산이 가능
+            // 숫자는 정수와 실수를 구분하지 않는다.
+////////////////////////////////////////////////////////////////
+
+        /*
+            변수에서 정의 할 수 있는 타입 6개
+            문자열, 숫자, 불리언, 함수, 객체, undefined
+        */
+
+        console.log('--------------------');
+       var stringVar = 'String'; //문자열
+       console.log(stringVar, typeof(stringVar));
+
+       var numberVar = 100;
+       console.log(numberVar, typeof(numberVar));
+
+       var booleanVar = false;
+       console.log(booleanVar, typeof(booleanVar));
+
+       var functionVar = function (){};
+       console.log(functionVar, typeof(functionVar));
+
+       var objectVar = {}; // 객체 생성-> {} 중괄호 블록을 사용
+       console.log(objectVar, typeof(objectVar));
+
+       var objArrayVar = []; // 배열 객체
+       console.log(value, typeof(value));
+
+       if(typeof(value) == 'undefined'){
+           console.log('연산 불가');
+       } else {
+           // 연산
+       }
+
+
+       // 브라우저가 HTML 문서의 모든 내용을 메모리에 올리는 과정이 끝날 때 발생하는 이벤트 등록
+        window.onload = function () {
+            var html = document.body.innerHTML; // document.body는 엘리먼트(요소)객체=캐스팅
+            var text = document.body.innerText;
+
+            // console.log('innerHTML :',html);
+            // console.log('innerText :',text);
+
+            var list='<ul>';
+            list += '   <li>HTML5</li>';
+            list += '   <li>CSS3</li>';
+            list += '   <li>Javascript</li>';
+            list += '</ul>'// 복합 대입 연산
+
+            window.body.innerHTML=list;
+
+        };
+
+        var name = '손흥민';
+        var name = '이강인';
+
+        console.log('name :', name);
+           
+        var name = 123;
+
+        console.log('name :', name);
+
+        name = false;
+        connsole.log('name : ',name);
+
+
+        //confirm() 함수 : 사용자에서 true / false 확인하는 함수
+        // var check = confirm('삭제하시겠습니까?');
+        // if(check){
+        //     alert('삭제했습니다.');
+        // } else {
+        //     alert('삭제를 취소했습니다.');
+        // }
+
+        // 문자열의 덧셈 : 문자열 + anyType => 문자열 + 문자열 = 문자열
+        console.log('"100 + 10"', '100+10');
+        console.log('"100" + 10', '100'+10);
+        console.log('100 + "10"', 100+"10");
+        console.log('100 + 10', 100+10);
+        console.log('"100" + "10"', '100'+'10');
+
+        console.log('"100" * 10', '100'*10);
+
+        ///////////////////////////////////////////////////////////////
+        // prompt(string, string) => string
+        var input = prompt('숫자를 입력하세요.');
+        console.log('input:', input);
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1>안녕하세요</h1>
+
+</body>
+
+</html>
