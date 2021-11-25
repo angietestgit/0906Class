@@ -1,0 +1,183 @@
+/*기본 설정*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 아래 페북 rbg는 인터넷에서 참고 */
+:root {
+    --white: #ffffff;
+    --gray1: #f5f6f7;
+    --gray2: #f0f2f5;
+    --gray3: #dddfe2;
+    --gray4: #8a8d91;
+    --gray5: #737373;
+    --black: #1c1e21;
+    --light-blue: #e7f3ff;
+    --blue1: #1877f2;
+    --blue2: #166fe5;
+    --green1: #42b72a;
+    --green2: #36a420;
+  }
+
+section {
+      height: 600px;
+      padding-top: 130px;
+      background-color: var(--gray2);
+    }
+
+#main_container{
+    width: 1000px;
+    margin: 0 auto;
+    overflow: visible;
+    position: relative;
+}
+
+#title_container{
+    width: 450px;
+    float: left;
+
+    position: absolute;
+    top: 50px;
+}
+
+#title_container>fb_img{
+    width: 300px;
+}
+
+#title_container>title_msg{
+    margin-left: 70px;
+    font-size: 200px;
+}
+
+/* 섹션 우측 */
+#login_container{
+    float: right;
+    width: 400px;
+    height: 370px;
+}
+
+#login_box{
+    width: 380px;
+    height: 300px;
+    padding: 20px;
+
+    border: 1px solid var(--gray3);
+    border-radius: 10px;
+    background-color: var(--white);
+
+    box-shadow: 5px 5px 10px var(--gray3);
+
+    overflow: visible;
+}
+
+#login_insert input{
+    width: 330px;
+    height: 20px;
+    margin: 0px auto 15px auto;
+    padding: 15px;
+
+    border-radius: 16px;
+    border: 1px solid var(--gray3);
+    font-size: 16px;
+}
+
+
+#login_insert input:focus{
+    border: 1px solid var(--blue1);
+    box-shadow: 1px 1px 5px var(--gray3);
+    outline: none;
+}
+
+#login_insert input[type=submit]{
+    width: 360px;
+    height: 50px;
+    border: 1px solid var(--blue1);
+    background-color: var(--blue1);
+    
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+#login_insert>a{
+    font-size: 16px;
+    text-align: center;
+    color: var(--blue1);
+    margin-bottom: 10px;
+    display: block;
+}
+
+#create_newacc{
+    text-align: center;
+    padding: 20px;
+}
+
+#create_newacc input[type=submit]{
+    width: 200px;
+    height: 50px;
+
+    border-radius: 7px;
+    border: 1px solid var(--green1);
+    background-color: var(--green1);
+    
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+#create_page{
+    text-align: center;
+    font-size: 16px;
+    padding-top: 25px;
+}
+
+#create_page a{
+    font-weight: bold;
+    color: var(--black);
+}
+
+
+/* footer 틀*/
+footer{
+    width: 1000px;
+    height: 200px;
+    
+    font-size: 14px;
+    color: var(--gray5);
+    margin: 0 auto;
+    padding-top: 20px;
+    
+}
+
+footer>div{
+    margin: 15px;
+}
+
+footer ul{
+    float:left;
+    list-style: none;
+}
+
+footer li{
+    float: left;
+}
+
+/*foot 내부 language */
+#laguage{
+    height: 30px;
+    border-bottom: 1px solid var(--gray4);
+}
+
+#laguage li{
+    padding: 5px 10px 5px 5px;
+}
+
+/*아래메뉴*/
+#menu{
+    height: 60px;
+}
+
+#menu li{
+    padding: 0 20px 5px 0;
+}

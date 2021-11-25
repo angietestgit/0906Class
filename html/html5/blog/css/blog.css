@@ -81,7 +81,7 @@ nav>div {
 
 /* 검색 영역 */
 nav input{
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     padding: 3px 20px;
 
     margin-top: 3px;
@@ -144,6 +144,6 @@ nav input[type=button]{
 /* footer 설정 */
 footer {
     height: 30px;
-    text-align: center;
-    line-height: 30px;
+    text-align: left;
+    line-height: none;
 }

@@ -1,0 +1,76 @@
+/* 기본 설정 */
+*{
+    margin: 0;
+    padding: 0;
+    background-color: var(--gray1);
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+:root {
+    --white: #ffffff;
+    --gray1: #f5f6f7;
+    --gray2: #f0f2f5;
+    --gray3: #dddfe2;
+    --gray4: #8a8d91;
+    --gray5: #737373;
+    --black: #1c1e21;
+    --light-blue: #e7f3ff;
+    --green1: #42b72a;
+    --green2: #36a420;
+}
+
+/* 웹 폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.bold{
+    font-weight: bold;
+}
+
+main{
+    width: 490px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--gray1);
+}
+
+#wrap{
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+header{
+    height:200px;
+    text-align: center;
+}
+
+#login_container{
+    background-color: var(--gray1);
+    padding: 20px;
+}
+
+#login_container input{
+    width: 430px;
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 0 0 0 20px;
+    border: 1px solid var(--gray1);
+    background-color: var(--white);
+    font-size: 19px;
+}
+
+#login_container input:focus{
+    border: 1px solid var(--green2);
+    outline: none;
+}
+
+#login_container input[type=submit] {
+    width: 450px;
+    height: 50px;
+    margin-bottom: 10px;
+    background-color: var(--green1);
+    border: 1px solid var(--green2);
+    color: var(--white);
+    font-size: 19px;
+
+}
+
+
