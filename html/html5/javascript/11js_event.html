@@ -68,12 +68,17 @@
             var uid = document.getElementById('uid');
             console.log(typeof(uid.value),uid.value);
             var pw = document.querySelector('#pw');
-            
+
             if(uid.value.length==0){
                 alert('아이디를 입력하시오!');
                 // 입력 포커스를 uid 입력 폼으로 이동
                 uid.focus();
                 return false;
+            }
+            if(pw.value.length == 0){
+                alert('비밀번호는 필수 입력 해야합니다.');
+
+
             }
 
             
@@ -97,8 +102,8 @@
 
     <form id="form">
 
-        아이디 <input type="text" id="uid">
-        비밀번호 <input type="password" id="pw">
+        아이디 <input type="text" id="uid" name="uid" value="">
+        비밀번호 <input type="password" id="pw" name="pw" value="" >
         <br>
 
         <input type="submit">

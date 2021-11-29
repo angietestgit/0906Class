@@ -1,0 +1,146 @@
+/*웹폰트*/
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&family=Noto+Sans+KR&display=swap');
+
+/*기본값*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+.title {
+    font-family: 'Black Han Sans', sans-serif;
+}
+
+.subtitle{
+    font-family: 'Jua', sans-serif;
+}
+
+input[type]{ 
+    border: 1px solid #aaa;
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+input[type=text], input[type=password] {
+    width: 220px;
+}
+
+input[type=submit], input[type=reset], input[type=button] {
+    width: 100px;
+    height: 70px;
+}
+
+
+/****************************/
+/* header 설정 */
+header { /*기준을 정해서 마진이나 패딩값을 주기*/
+    padding: 20px;
+    border-bottom: 1px solid #aaa;
+}
+
+header>h1 { /*하나하나*/
+    color: royalblue;
+}
+
+
+
+/****************************/
+/* id# <class>. 회원 정보 입력 폼 설정 */
+#regFormArea {
+    padding: 10px 40px;
+    border-bottom: 1px solid #aaa;
+}
+
+#regFormArea>table td{ /*table밑에 tbody자동생성때문에 td만 써줘도 됨*/
+    padding: 2px 5px;
+}
+
+/* #regFormArea input[type]{ //table 후손 type
+    border: 1px solid #aaa;
+    padding: 2px;
+    font-size: 1.2em;
+}
+
+//복합 선택
+#regFormArea input[type=text], #regFormArea input[type=password] {
+    width: 220px;
+}
+
+#regFormArea input[type=submit], #regFormArea input[type=reset] {
+    //버튼 모양
+    width: 100px;
+    height: 70px;
+} */
+
+div.msg {
+    height: 20px;
+
+    color: red;
+} 
+
+/****************************/
+/* 회원 리스트 영역 설정 */
+#memberList {
+    padding: 10px 40px;
+    border-bottom: 1px solid #aaa;
+}
+
+#memberList>table {
+    margin: 15px 0; /*상하좌우*/
+    width: 1000px;
+    border-collapse: collapse;
+}
+
+#memberList>table td, #memberList>table th{ /*후손 <-> 자손>*/
+    border: 1px solid #aaa;
+    padding: 10px;
+    
+    text-align: center;
+}
+
+/****************************/
+/* 회원 정보 수정 영역 설정 */
+#editFormArea {
+    padding: 20px;
+    background-color: wheat;
+    width: 400px;
+
+    border: 3px solid #666;
+    border-radius: 10px;
+
+    position: absolute;
+    left: 50%;
+    top: 100px;
+
+    margin-left: -223px;
+
+    display: none;
+}
+
+#wrapHeader {
+    overflow: hidden;
+    padding: 10px 0;
+    border-bottom: 1px solid #aaa;
+
+    margin-bottom: 20px;
+}
+
+#wrapHeader>h2 {
+    float: left;
+}
+#wrapHeader>a {
+    float: right;
+
+    line-height: 32px;
+}
+
+
+#editForm td {
+    padding: 5px 10px;
+    text-align: center;
+}
