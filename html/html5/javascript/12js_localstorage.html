@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 데이타 저장
+        localStorage.setItem('uid', 'hot'); //데이터 저장
+        console.log('uid 저장');
+
+        // 데이터 가져오기
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('uid'));
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('id'));
+
+        //데이터 삭제
+        // localStorage.removeItem('id');
+
+        //전체 데이터 삭제
+        localStorage.clear();
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('uid'));
+        console.log('localStorage 의 데이터 가져오기', localStorage.getItem('id'));
+
+
+    </script>
+
+
+</head>
+<body>
+    
+</body>
+</html>
