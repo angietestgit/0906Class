@@ -17,8 +17,10 @@
 		
 	%>
 	<%= now1 %>
-	<h1><%= LocalDate.now() %></h1>
-	
+	<h1><%=
+			// %=는 출력. 시간정보 text 출력
+			LocalDate.now() %></h1>
+	 
 	
 	<h1>처음 작성한 JSP 파일 </h1>
 
