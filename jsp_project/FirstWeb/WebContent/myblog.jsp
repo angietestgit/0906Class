@@ -4,8 +4,13 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 <style>
+/* 웹폰트 */
+@import
+	url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR&display=swap')
+	;
+
 /* 기본 설정 */
 * {
 	margin: 0;
@@ -142,12 +147,24 @@ footer {
 }
 </style>
 </head>
+
 <body>
-<%@ include file="blogjsp/aside.jsp" %>
-<%@ include file="blogjsp/footer.jsp" %>
-<%@ include file="blogjsp/header.jsp" %>
-<%@ include file="blogjsp/nav.jsp" %>
-<%@ include file="blogjsp/section.jsp" %>
+	<div id=main_wrap>
+		<!-- header -->
+		<%@ include file="blogJsp/header.jsp" %>
+		<!-- navigation -->
+		<%@ include file="blogJsp/nav.jsp" %>
+	
+				<!-- contents -->
+		<div id="contents_wrap">
+			<%@ include file="blogJsp/section.jsp" %>
+			<%@ include file="blogJsp/aside.jsp" %>
+		</div>
+		<!-- footer -->
+		<%@ include file="blogJsp/footer.jsp" %>
+	
+	</div>
+	
 
 </body>
 </html>
