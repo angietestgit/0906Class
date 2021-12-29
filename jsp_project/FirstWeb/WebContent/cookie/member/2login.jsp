@@ -17,12 +17,16 @@
 		//	http://localhost:8080/....
 		response.addCookie(CookieBox.createCookie("ID", id, -1, "/"));
 	
-		String saveID = request.getPAsameter("saveID");
+		String saveID = request.getParameter("saveID");
 		
-		if(saveID != null && saveId.equals("on")){
-			
-		// }
+		if(saveID != null && saveID.equals("on")){
+			response.addCookie(CookieBox.createCookie("saveID", id, 60*60*24*365, "/"));
+		} else {
+			response.addCookie(CookieBox.createCookie("saveID", "", 0, "/"));
+		}
 	
+		
+		
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -37,9 +41,11 @@
 
 </body>
 </html>
-<% } else {%>
+<% 		} else { %>
 <script>
 	alert('로그인 실패!!!');
 	history.go(-1);
 </script>
 <%  } %>
+
+
