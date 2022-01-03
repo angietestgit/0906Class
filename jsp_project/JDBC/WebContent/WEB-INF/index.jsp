@@ -10,7 +10,7 @@
 
 	<h1>부서관리 프로그램 / 사원관리 프로그램 </h1>
 	<h3>
-		<a href="">부서관리 프로그램</a> <br>
+		<a href="${pageContext.request.contextPath}/dept/list.do">부서관리 프로그램</a> <br>
 		<a href="">사원관리 프로그램</a> <br>
 	</h3>
 	
