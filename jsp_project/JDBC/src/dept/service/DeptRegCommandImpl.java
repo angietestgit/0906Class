@@ -74,6 +74,8 @@ public class DeptRegCommandImpl implements Command {
 			request.setAttribute("result", regCnt);
 			request.setAttribute("dept", dept);			
 			
+			//"redirect:/dept/list.do"
+			
 			view = "/WEB-INF/views/dept/reg.jsp";
 			
 		}		

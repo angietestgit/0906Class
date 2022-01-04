@@ -15,4 +15,8 @@ INSERT INTO dept (deptno, dname, loc) VALUES (?,?,?);
 
 select * from project.dept where deptno=?;
 
+-- 수정
 UPDATE dept SET dname=?, loc=? WHERE deptno=?;
+
+-- 삭제
+DELETE FROM project.dept WHERE deptno=?;
