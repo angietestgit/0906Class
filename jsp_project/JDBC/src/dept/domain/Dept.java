@@ -7,6 +7,8 @@ public class Dept {
 	private String dname;	// 부서이름
 	private String loc;		// 부서위치
 	
+	public Dept() {}
+	
 	public Dept(int deptno, String dname, String loc) {
 		this.deptno=deptno;
 		this.dname=dname;

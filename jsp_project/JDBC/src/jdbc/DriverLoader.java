@@ -12,16 +12,15 @@ import javax.servlet.http.HttpServlet;
 		initParams = { 
 				@WebInitParam(name = "driver", value = "com.mysql.cj.jdbc.Driver")
 		})
-public class DriverLoader extends HttpServlet {
 
-	
+public class DriverLoader extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		
 		String driver = config.getInitParameter("driver");
 		
 		// DB 드라이버 로드	
 		try {
-			Class.forName("driver");
+			Class.forName(driver);
 			System.out.println("mysql 드라이버 로드 성공!!!");
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로드 실패!!!");
