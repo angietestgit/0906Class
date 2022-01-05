@@ -26,8 +26,7 @@ public class DeptEditCommandImpl implements Command {
 			// DAO -> Dept 객체 => request 저장
 			Connection conn = null;
 			Dept dept = null;
-			
-			
+						
 			try {
 				conn = ConnectionProvider.getConnection();
 				
@@ -42,13 +41,12 @@ public class DeptEditCommandImpl implements Command {
 			request.setAttribute("dept", dept);
 			view = "/WEB-INF/views/dept/editform.jsp";		
 			
-		} else if(request.getMethod().equals("POST")) {
-			
-			try {
-				request.setCharacterEncoding("utf-8");
-			} catch (UnsupportedEncodingException e) {
-				e.printStackTrace();
-			}
+		} else if(request.getMethod().equals("POST")) {			
+//			try {
+//				request.setCharacterEncoding("utf-8");
+//			} catch (UnsupportedEncodingException e) {
+//				e.printStackTrace();
+//			}
 
 			// 수정하고자 하는 데이터를 받는다.
 			String dname = request.getParameter("dname");
