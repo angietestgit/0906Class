@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import jdbc.util.JdbcUtil;
 import member.domain.Member;
+import member.domain.RegRequest;
 
 public class MemberDao {
 
@@ -18,19 +19,22 @@ public class MemberDao {
 	}
 	
 	// Connection 객체, Member 객체를 전달 받아 데이터베이스에 데이터 입력
-	public int insertMember(Connection conn, Member member) throws SQLException {
+	public int insertMember(Connection conn, RegRequest request) throws SQLException {
 		
 		int resultCnt = 0;
 		PreparedStatement pstmt = null;
 		
-		String sql="INSERT INTO member ( userid, password, username) VALUES (?,?,?)";
+		String sql="INSERT INTO member ( userid, password, username, photo) VALUES (?,?,?,?)";
+		//String sql="INSERT INTO member ( userid, password, username) VALUES (?,?,?)";
+
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member.getUserid());
-			pstmt.setString(2, member.getPw());
-			pstmt.setString(3, member.getUsername());
-		
+			pstmt.setString(1, request.getUserid());
+			pstmt.setString(2, request.getPw());
+			pstmt.setString(3, request.getUsername());
+			pstmt.setString(4, request.getFileName());
+
 			resultCnt = pstmt.executeUpdate();
 			
 		} finally {

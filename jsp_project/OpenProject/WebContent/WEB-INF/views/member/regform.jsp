@@ -34,7 +34,7 @@
 		<hr>
 		<!-- form 경로와 처리 경로가 동일-> method로 구분! -->
 		<!-- action="reg.do" 생략가능 -->
-		<form action="reg.do" method="post">
+		<form action="reg.do" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>아이디</td>
@@ -51,7 +51,11 @@
 				<tr>
 					<td>이름</td>
 					<td><input type="text" name="username"></td>
-				</tr
+				</tr>
+				<tr>
+					<td>사진</td>
+					<td><input type="file" name="photo"></td>
+				</tr>
 				<tr>
 					<td></td>
 					<td><input type="submit" value="회원가입"><input type="reset"> </td>
