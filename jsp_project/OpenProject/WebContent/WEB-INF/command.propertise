@@ -6,3 +6,5 @@
 /member/reg.do=member.command.MemberRegCommandImpl
 # Login
 /member/login.do=member.command.LoginCommandImpl
+# Logout
+/member/logout.do=member.command.LogougCommandImpl
