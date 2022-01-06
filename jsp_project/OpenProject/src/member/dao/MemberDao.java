@@ -2,6 +2,7 @@ package member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import jdbc.util.JdbcUtil;
@@ -43,5 +44,41 @@ public class MemberDao {
 		}
 		
 		return resultCnt;
+	}
+
+	// 로그인 처리를 위한 select 메소드
+	public Member selectByIdPw(Connection conn, String userId, String pw) throws SQLException {
+		
+		Member member = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql="select * from member where userid=? and password=?"; 
+				
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, pw);
+		
+			rs = pstmt.executeQuery();
+		
+			if(rs.next()) {
+				member= new Member(
+						rs.getInt("idx"),		//1
+						rs.getString("userid"),	//2
+						rs.getString("password"),//3
+						rs.getString("username"),//4
+						rs.getString("regdate"),//6
+						rs.getString("photo"));	//5
+			}	
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		
+		return member;
 	}
 }

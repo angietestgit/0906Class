@@ -86,6 +86,12 @@ public class Member {
 		return "Member [idx=" + idx + ", userid=" + userid + ", pw=" + pw + ", username=" + username + ", regdate="
 				+ regdate + ", photo=" + photo + "]";
 	}
+
+	public Object getLoginInfo() {
+		return new LoginInfo(this.userid, this.username, this.photo);
+	}
+
+	
 	
 	
 	

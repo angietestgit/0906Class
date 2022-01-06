@@ -4,3 +4,5 @@
 /member/index.do=member.command.MemberIndexCommandImpl
 # member Reg : form page
 /member/reg.do=member.command.MemberRegCommandImpl
+# Login
+/member/login.do=member.command.LoginCommandImpl
