@@ -81,4 +81,37 @@ public class MemberDao {
 		
 		return member;
 	}
+
+	public Member selectById(Connection conn, String userId) throws SQLException {
+Member member = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql="select * from member where userid=?"; 
+				
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+		
+			rs = pstmt.executeQuery();
+		
+			if(rs.next()) {
+				member= new Member(
+						rs.getInt("idx"),		//1
+						rs.getString("userid"),	//2
+						rs.getString("password"),//3
+						rs.getString("username"),//4
+						rs.getString("regdate"),//6
+						rs.getString("photo"));	//5
+			}	
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		
+		return member;
+	}
 }

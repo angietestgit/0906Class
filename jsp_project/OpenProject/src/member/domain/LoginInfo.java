@@ -3,13 +3,13 @@ package member.domain;
 public class LoginInfo {
 	
 	private String userId;
-	private String username;
+	private String userName;
 	private String photo;
 	
-	public LoginInfo(String userId, String username, String photo) {
+	public LoginInfo(String userId, String userName, String photo) {
 		super();
 		this.userId = userId;
-		this.username = username;
+		this.userName = userName;
 		this.photo = photo;
 	}
 
@@ -21,12 +21,12 @@ public class LoginInfo {
 		this.userId = userId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPhoto() {
@@ -39,11 +39,11 @@ public class LoginInfo {
 
 	@Override
 	public String toString() {
-		return "LoginInfo [userId=" + userId + ", username=" + username + ", photo=" + photo + "]";
+		return "LoginInfo [userId=" + userId + ", userName=" + userName + ", photo=" + photo + "]";
 	}
 	
 	public LoginInfo getLoginInfo() {
-		return new LoginInfo(this.userId, this.username, this.photo);
+		return new LoginInfo(this.userId, this.userName, this.photo);
 	}
 	
 }
