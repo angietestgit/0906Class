@@ -25,10 +25,21 @@
 
 
 ################################################################
-# 아직 안했움..ㅠㅠ(힌트)
+# 과제 아직 안했움..ㅠㅠ(힌트)
+# GuestBook insert
+# /guestbook/write.do=guestbook.command.GuestBookWriteCommandImpl
+# GuestBook list
+# /guestbook/list.do=guestbook.command.GuestBookListCommandImpl
 # GuestBook view
 # /guestbook/view.do=guestbook.command.GuestBookViewCommandImpl
 # GuestBook edit
 # /guestbook/edit.do=guestbook.command.GuestBookEditCommandImpl
 # GuestBook delete
 # /guestbook/delete.do=guestbook.command.GuestBookBookDeleteCommandImpl
+
+# +ajax과제
+# /guestbook/writeajax.do=guestbook.command.GuestBookWriteAjaxCommandImpl
+
+
+
+
