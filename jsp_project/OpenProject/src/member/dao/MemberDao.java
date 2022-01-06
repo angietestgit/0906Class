@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.util.JdbcUtil;
 import member.domain.Member;
@@ -64,13 +67,16 @@ public class MemberDao {
 			rs = pstmt.executeQuery();
 		
 			if(rs.next()) {
-				member= new Member(
-						rs.getInt("idx"),		//1
-						rs.getString("userid"),	//2
-						rs.getString("password"),//3
-						rs.getString("username"),//4
-						rs.getString("regdate"),//6
-						rs.getString("photo"));	//5
+//				member= new Member(
+//						rs.getInt("idx"),		//1
+//						rs.getString("userid"),	//2
+//						rs.getString("password"),//3
+//						rs.getString("username"),//4
+//						rs.getString("regdate"),//6
+//						rs.getString("photo"));	//5
+				
+				member = getMember(rs);
+				
 			}	
 		} finally {
 			JdbcUtil.close(rs);
@@ -97,21 +103,92 @@ Member member = null;
 			rs = pstmt.executeQuery();
 		
 			if(rs.next()) {
-				member= new Member(
-						rs.getInt("idx"),		//1
-						rs.getString("userid"),	//2
-						rs.getString("password"),//3
-						rs.getString("username"),//4
-						rs.getString("regdate"),//6
-						rs.getString("photo"));	//5
+//				member= new Member(
+//						rs.getInt("idx"),		//1
+//						rs.getString("userid"),	//2
+//						rs.getString("password"),//3
+//						rs.getString("username"),//4
+//						rs.getString("regdate"),//6
+//						rs.getString("photo"));	//5
+				member = getMember(rs);
+				
 			}	
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(pstmt);
 		}
 		
-		
-		
 		return member;
 	}
+
+	public List<Member> selectList(Connection conn, int index, int count) throws SQLException {
+
+		List<Member> list = new ArrayList<Member>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from member order by regdate desc limit ?, ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, index);
+			pstmt.setInt(2, count);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+//				Member member = new Member(
+//						rs.getInt("index"),
+//						rs.getString("userid"),
+//						rs.getString("password"),
+//						rs.getString("username"),
+//						rs.getString("regdate"),
+//						rs.getString("photo"));
+				list.add(getMember(rs));
+			} 	
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+
+		return list;
+	}
+	
+	
+	private Member getMember(ResultSet rs) throws SQLException {
+		
+		return new Member(
+				rs.getInt("idx"),
+				rs.getString("userid"),
+				rs.getString("password"),
+				rs.getString("username"),
+				rs.getString("regdate"),
+				rs.getString("photo"));
+	}
+
+	public int selectTotalCount(Connection conn) throws SQLException {
+
+		int totalCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select count(*) from member";
+		
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql); 
+			
+			if(rs.next()) {
+				totalCount = rs.getInt(1);
+			}					
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);			
+		}
+				
+		return totalCount;
+	}
+	
 }
