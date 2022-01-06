@@ -1,0 +1,118 @@
+# Open Project : MVC 패턴
+1. 회원 관리 : 회원가입, 로그인, 리스트, 수정, 삭제
+2. 방명록(게시판) : 리스트, 쓰기, 수정, 삭제, -> 회원만 사용하는 게시판
+
+============================================
+1. DB 설정
+- 스키마 : Project
+- 테이블 (DDL) : member
+------------------------------------------------------------------------
+CREATE TABLE `member` (
+  `idx` int NOT NULL AUTO_INCREMENT,
+  `userid` varchar(20) COLLATE utf8_bin NOT NULL,
+  `password` varchar(20) COLLATE utf8_bin NOT NULL,
+  `username` varchar(20) COLLATE utf8_bin NOT NULL,
+  `regdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idx`),
+  UNIQUE KEY `userid_UNIQUE` (`userid`)
+)
+-------------------------------------------------------------------------
+- 필요한 SQL 작성
+
+
+
+2. 프로젝트 생성 -> 세팅(MVC, DB, FileIUpload, 정적 파일 경로 )
+- 라이브러리 추가
+: 데이터베이스, 파일업로드, JSTL
+- MVC
+FrontController(Servlet)
+-> web.xml 설정 : *.do
+-> initParam으로 configPath(command.propertise) web.xml에 저장
+-> 서블릿은 파라미터 값을 읽고 실행
+Command interface,
+Command.propertise(설정파일)
+- 데이터베이스
+-> 드라이버 초기화 하는 servlet : Loader -> web.xml 설정 (시작시에 1번 실행)
+-> Connection 객체를 제공하는 : ConnectionProvider
+-> JdbcUtil : close() 메소드 => Connection, Statement, ResultSet 
+- EncodingFilter
+-> 사용자 입력 데이터의 한글처리 : web.xml 설정
+- 파일 업로드
+-> 업로드 폴더 설정 : /uploadfile
+-> css, js, image 폴더 생성
+
+3. Domain Class
+- 사용자의 요청 데이터를 담는 beans (domain class) : RegRequest
+- DB 데이터를 담는 beans (domain class) : Member
+
+
+4. 각각의 요청의 응답 페이지 생성
+   - 설정 -> Command 클래스 생성 -> Service -> Dao -> JSP
+   	설정 : 사자용자의 요청 <Url-처리 클래스> 등록
+	Command 클래스 : 요청을 처리하고 응답을 request|session 에 저장, view 지정
+	Service 클래스 : 핵심 처리, 데이터 처리( 가공 )
+	Dao : 데이터베이스 처리 ( CRUD )
+	JSP : 사용자에게 응답할 뷰 처리
+
+	1. 회원 가입 : /member/reg.do=member.command.MemberRegCommandImpl
+	   - 가입 폼 : GET
+	   - 가입 처리 : POST
+	   - 회원 프로필 사진 추가 : table 수정 -> domain class 변경 -> Service -> Dao
+
+	2. 회원 로그인 : /member/login.do=member.command.LoginCommandImpl
+	  - 로그인 폼 : GET
+	  - 로그인 처리 : POST
+		- 사용자 데이터 id pw 확인
+		- 로그인 정보를 가지는 클래스 생성 : LoginInfo -> userid, username, photo
+	
+	3. 로그아웃 : /member/logout.do=member.command.LogoutCommandImpl
+
+
+	4. 개인화 페이지 Mypage : /member/my/mypage.do=member.command.MyPageCommandImpl
+	- 로그인 여부 확인 후
+		: 로그인 상태이면 회원 정보 모두를 출력
+		: 비 로그인 상태이면 로그인 폼으로 이동
+	- 로그인 필터
+		: 사용자 요청을 처리하기 전에 로그인 체크
+
+	5. 회원 리스트 : /member/maganer/list.do
+	- 리스트 -> 페이징 처리 : 페이지당 3명씩 출력
+	- ViewPage : domain class -> 응답 화면에 전달할 데이터
+		- List<Member> : 회원 정보 리스트
+		- totatlCount : 전체 회원의 수
+		- totalPageCount : 페이지 개수
+		- currentPage : 현재 페이지 번호
+		- memberPerPage : 페이지 당 출력할 회원의 수
+		- startRow : 테이블의 시작 행의 위치
+
+	6. 회원 정보 수정 : /member/maneger/edit.do=member.command.MemberEditCommandImpl
+		- idx 값을 받아서 form 생성
+		- 폼 페이지 : GET
+		- 수정 처리 : POST
+			- 파일 처리
+
+	7. 회원 정보 삭제: /member/manager/delete.do=member.command.MemberDeleteCommandImpl
+		- idx 값을 받아서 삭제 처리
+		- DB행을 삭제, 파일이 있는 경우 삭제
+	
+
+# 방명록( 게시판 )
+1. DB 설정
++ GuestBook
+- 내용
+- 제목
+- 작성 일시
+- Member_PK : FK 설정
++ reply (댓글)
+- 작성자
+- 비밀번호
+- 내용
+- 작성일시
+- GeustBook_PK : FK 설정
+- Member_PK : FK 설정
+
+	
+
+
+
+
