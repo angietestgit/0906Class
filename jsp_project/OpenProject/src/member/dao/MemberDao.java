@@ -240,5 +240,27 @@ Member member = null;
 		
 		return resultCnt;
 	}
+
+	public int deleteMemberByIdx(Connection conn, int idx) throws SQLException {
+
+		int resultCnt = 0;
+
+		PreparedStatement pstmt = null;
+		
+		String sql = "DELETE FROM member WHERE idx=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			
+			resultCnt = pstmt.executeUpdate();
+			
+		} finally {
+			JdbcUtil.close(pstmt);
+		}
+		
+		
+		return resultCnt;
+	}
 	
 }

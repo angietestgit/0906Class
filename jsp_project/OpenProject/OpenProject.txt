@@ -83,14 +83,16 @@ Command.propertise(설정파일)
 		- memberPerPage : 페이지 당 출력할 회원의 수
 		- startRow : 테이블의 시작 행의 위치
 
-	6. 회원 정보 수정 : /member/maneger/edit.do
+	6. 회원 정보 수정 : /member/maneger/edit.do=member.command.MemberEditCommandImpl
 		- idx 값을 받아서 form 생성
 		- 폼 페이지 : GET
 		- 수정 처리 : POST
+			- 파일 처리
 
-
-	7. 회원 정보 삭제
-
+	7. 회원 정보 삭제: /member/manager/delete.do=member.command.MemberDeleteCommandImpl
+		- idx 값을 받아서 삭제 처리
+		- DB행을 삭제, 파일이 있는 경우 삭제
+	
 
 
 

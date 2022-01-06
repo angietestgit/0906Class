@@ -36,5 +36,9 @@ where idx=11
 update member set password=?, username=?, photo=? where idx=?
 ;
 
+-- delete
+DELETE FROM project.member WHERE idx=7;
+DELETE FROM member WHERE idx=?;
+
 
 select * from project.member;
