@@ -8,6 +8,11 @@
 /member/login.do=member.command.LoginCommandImpl
 # Logout
 /member/logout.do=member.command.LogoutCommandImpl
+
+# member idcheck(ajax 회원가입 아이디체크)
+/member/checkid.do=member.command.CheckIdCommandImpl
+
+
 # MyPage
 /member/my/mypage.do=member.command.MyPageCommandImpl
 # Member List
@@ -18,3 +23,12 @@
 /member/manager/delete.do=member.command.MemberDeleteCommandImpl
 
 
+
+################################################################
+# 아직 안했움..ㅠㅠ(힌트)
+# GuestBook view
+# /guestbook/view.do=guestbook.command.GuestBookViewCommandImpl
+# GuestBook edit
+# /guestbook/edit.do=guestbook.command.GuestBookEditCommandImpl
+# GuestBook delete
+# /guestbook/delete.do=guestbook.command.GuestBookBookDeleteCommandImpl

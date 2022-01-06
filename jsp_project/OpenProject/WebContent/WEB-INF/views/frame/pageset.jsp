@@ -7,4 +7,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css">
 
 <!-- JS -->
-<script src="${pageContext.request.contextPath}/js/index.css"></script>
+<!-- <script src="${pageContext.request.contextPath}/js/index.css"></script> -->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+
