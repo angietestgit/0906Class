@@ -17,7 +17,24 @@ select count(*) from project.member;
 
 select count(*) from member;
 
+select * from project.member where idx=1;
+select * from member where idx=?
+;
+
 
 -- insert
 INSERT INTO member ( userid, password, username) VALUES (?,?,?)
 ;
+
+
+-- update
+update project.member
+set pw='999', username='손흥민', photo='mini1.png'
+where idx=11
+;
+
+update member set password=?, username=?, photo=? where idx=?
+;
+
+
+select * from project.member;

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.util.JdbcUtil;
+import member.domain.EditRequest;
 import member.domain.Member;
 import member.domain.RegRequest;
 
@@ -189,6 +190,55 @@ Member member = null;
 		}
 				
 		return totalCount;
+	}
+
+	public Member selectByIdx(Connection conn, int idx) throws SQLException {
+
+		Member member = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from member where idx=?";
+				
+		try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, idx);
+		
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			member = getMember(rs);
+		} 
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+		
+		return member;
+	}
+
+	public int updateMember(Connection conn, EditRequest editRequest) throws SQLException {
+		
+		int resultCnt = 0;
+		
+		PreparedStatement pstmt = null;		
+		String sql = "update member set password=?, username=?, photo=? where idx=?"; 
+				
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, editRequest.getPw());
+			pstmt.setString(2, editRequest.getUsername());
+			pstmt.setString(3, editRequest.getFileName());
+			pstmt.setInt(4, editRequest.getIdx());
+		
+			resultCnt = pstmt.executeUpdate();			
+		} finally {
+			JdbcUtil.close(pstmt);			
+		}
+		
+		
+		return resultCnt;
 	}
 	
 }

@@ -12,3 +12,8 @@
 /member/my/mypage.do=member.command.MyPageCommandImpl
 # Member List
 /member/manager/list.do= member.command.MemberListCommandImpl
+# Member Edit
+/member/maneger/edit.do=member.command.MemberEditCommandImpl
+
+
+
