@@ -12,3 +12,8 @@
 
 * 설정 -> command -> service -> dao -> jsp
   Controller -> jsp
+
+------------------------------------------
+* Spring 파일 업로드
+1. 라이브러리 추가( jar )
+pom.xml -> 의존 설정
