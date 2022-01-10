@@ -1,0 +1,14 @@
+1. JDK 버전 변경
+2. pom 설정 파일에서 java 버전 변경
+3. java compiler 변경
+4. project facet 변경
+5. Spring Framework 버전 변경 : 4.3.10
+
+------------------------------------------
+* get | /form
+=> form 페이지
+ post | /form
+=> 파라미터 데이터 받기
+
+* 설정 -> command -> service -> dao -> jsp
+  Controller -> jsp
