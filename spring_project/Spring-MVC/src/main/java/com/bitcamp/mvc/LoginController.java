@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/member/login")
 public class LoginController {
 	
+	// +Spring MVC Interceptor
 	@GetMapping
 	public String getLoginForm(
 			Model model,
