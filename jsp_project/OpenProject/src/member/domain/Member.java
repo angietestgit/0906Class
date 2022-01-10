@@ -87,10 +87,9 @@ public class Member {
 				+ regdate + ", photo=" + photo + "]";
 	}
 
-	public Object getLoginInfo() {
-		return new LoginInfo(this.userid, this.username, this.photo);
+	public LoginInfo getLoginInfo() {
+		return new LoginInfo(this.idx, this.userid, this.username, this.photo);
 	}
-
 	
 	
 	
