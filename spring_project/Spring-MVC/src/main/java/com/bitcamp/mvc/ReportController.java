@@ -33,8 +33,7 @@ public class ReportController {
 			@ModelAttribute("report") ReqReport report,
 			HttpServletRequest request
 			) {
-		
-		
+
 		System.out.println("학번 : " + report.getSno());
 		System.out.println("이름 : " + report.getSname());
 		System.out.println("리포트 파일 : " + report.getReport().getOriginalFilename());

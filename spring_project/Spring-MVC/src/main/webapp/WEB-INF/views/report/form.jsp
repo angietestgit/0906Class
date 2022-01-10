@@ -34,10 +34,8 @@
 
 
 	<hr>
-
 	<h1>리포트 등록 : MultipartHttpServletReqeust 객체를 이용</h1>
 	<hr>
-	
 	<!-- action="/mvc/report/submit2" -->
 	<form action="submit2" method="post" enctype="multipart/form-data">
 		<table>
@@ -65,7 +63,6 @@
 
 	<h1>리포트 등록 : @RequestParam을 이용</h1>
 	<hr>
-	
 	<!-- action="/mvc/report/submit1" -->
 	<form action="submit1" method="post" enctype="multipart/form-data">
 		<table>
