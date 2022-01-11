@@ -37,7 +37,12 @@ public class MemberManager {
 			 if(command.startsWith("change")) {
 				 processChangePassword(command.split(" "));
 			 }	
+		
+			//	sc.close();
+
 		}
+		
+		
 	}
 	
 	private static void processChangePassword(String[] values) {
@@ -100,7 +105,6 @@ public class MemberManager {
 		System.out.println("change son@gmail.com 123 000");
 		System.out.println("-----------------------------------");
 	}
-	
 	
 	
 	
