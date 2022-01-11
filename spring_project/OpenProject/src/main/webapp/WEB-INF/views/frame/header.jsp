@@ -5,7 +5,7 @@
 		<h1>Open Project</h1>
 		<div id="loginInfoArea">
 			<c:if test="${empty loginInfo }">
-			<a href="${pageContext.request.contextPath}/member/login.do">login</a>
+			<a href="${pageContext.request.contextPath}/member/login">login</a>
 			</c:if>
 			
 			<c:if test="${not empty loginInfo}">
@@ -14,7 +14,7 @@
 					<td><img src="${pageContext.request.contextPath}/uploadfile/${loginInfo.photo}"></td>
 					<td>
 					${loginInfo.userName}(${loginInfo.userId})
-					<a href="${pageContext.request.contextPath}/member/logout.do">logout</a>
+					<a href="${pageContext.request.contextPath}/member/logout">logout</a>
 					</td>
 				</tr>
 			</table>

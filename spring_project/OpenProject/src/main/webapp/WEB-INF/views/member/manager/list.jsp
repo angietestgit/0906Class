@@ -104,7 +104,7 @@
 			<tr>
 				<td>${member.idx}</td>
 				<td>${member.userid}</td>
-				<td>${member.pw}</td>
+				<td>${member.password}</td>
 				<td>${member.username}</td>
 				<td>${member.photo}</td>
 				<td>${member.regdate}</td>

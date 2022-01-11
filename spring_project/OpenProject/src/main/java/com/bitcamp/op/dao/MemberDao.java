@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bitcamp.op.jdbc.JdbcUtil;
+import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.MemberRegRequest;
 
 
@@ -41,6 +42,71 @@ public class MemberDao {
 		
 		return resultCnt;
 	}
+	
+	
+	public int selectTotalCount(Connection conn) throws SQLException {
+
+		int totalCount = 0;
+		
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select count(*) from member";
+		
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql); 
+			
+			if(rs.next()) {
+				totalCount = rs.getInt(1);
+			}					
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);			
+		}
+				
+		return totalCount;
+	}
+	
+	
+	public List<Member> selectList(Connection conn, int index, int count) throws SQLException {
+
+		List<Member> list = new ArrayList<Member>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from member order by regdate desc limit ?, ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, index);
+			pstmt.setInt(2, count);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(getMember(rs));
+			} 	
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+
+		return list;
+	}
+	
+	private Member getMember(ResultSet rs) throws SQLException {
+	return new Member(
+			rs.getInt("idx"),
+			rs.getString("userid"),
+			rs.getString("password"),
+			rs.getString("username"),
+			rs.getString("regdate"),
+			rs.getString("photo"));
+}
+	
+	
 
 //	// 로그인 처리를 위한 select 메소드
 //	public Member selectByIdPw(Connection conn, String userId, String pw) throws SQLException {
