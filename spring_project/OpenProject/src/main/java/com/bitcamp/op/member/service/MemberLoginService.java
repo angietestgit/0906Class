@@ -1,17 +1,16 @@
 package com.bitcamp.op.member.service;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
-import com.bitcamp.op.member.dao.MemberDao;
+import com.bitcamp.op.member.dao.agoMemberDao;
+import com.bitcamp.op.member.dao.mybatisMemberDao;
 import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.MemberLoginRequest;
 import com.bitcamp.op.member.exception.LoginInvalidException;
@@ -22,8 +21,17 @@ public class MemberLoginService {
 	//@Autowired
 	//private MemberDao dao;
 	
+	//@Autowired
+	//private JdbcTemplateMemberDao dao;
+	
+	//@Autowired
+	//private mybatisMemberDao dao;
+	
+	private agoMemberDao dao;
+	
 	@Autowired
-	private JdbcTemplateMemberDao dao;
+	private SqlSessionTemplate template;
+	
 
 	public String login(MemberLoginRequest loginRequest, HttpSession session, HttpServletResponse response)
 			throws Exception {
@@ -31,11 +39,15 @@ public class MemberLoginService {
 		String viewName = null;
 		//Connection conn = null;
 		Member member = null;
+		
+		dao = template.getMapper(agoMemberDao.class);
 
 		//try {
 			//conn = ConnectionProvider.getConnection();
 
 			//member = dao.selectByIdPw(conn, loginRequest.getUserid(), loginRequest.getPw());
+			//member = dao.selectByIdPw(loginRequest.getUserid(), loginRequest.getPw());
+			//member = dao.selectByIdPw(loginRequest.getLoginParams());
 			member = dao.selectByIdPw(loginRequest.getUserid(), loginRequest.getPw());
 
 			if (member == null) {
@@ -48,8 +60,10 @@ public class MemberLoginService {
 
 			// id 저장하기 체크 처리 : checked 상태 -> "on" -> 쿠키 저장
 			if (loginRequest.getSaveid() != null && loginRequest.getSaveid().equals("on")) {
+
 				Cookie c = new Cookie("saveId", loginRequest.getUserid());
 				response.addCookie(c);
+
 			}
 
 			if (loginRequest.getUrl().length() > 0) {
