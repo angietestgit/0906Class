@@ -40,6 +40,8 @@
 	</beans:bean>
 	
 
+	<beans:bean id="authCheckInterceptor"
+				class="com.bitcamp.op.member.interceptor.AuthCheckInterceptor"/>
 
 	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
 	<interceptors>
