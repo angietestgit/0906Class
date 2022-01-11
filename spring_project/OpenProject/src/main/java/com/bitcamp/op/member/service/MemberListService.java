@@ -8,8 +8,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bitcamp.op.dao.JdbcTemplateMemberDao;
-import com.bitcamp.op.dao.MemberDao;
+import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
+import com.bitcamp.op.member.dao.MemberDao;
 import com.bitcamp.op.member.domain.ListPageView;
 import com.bitcamp.op.member.domain.Member;
 
