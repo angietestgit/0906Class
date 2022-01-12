@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
-import com.bitcamp.op.member.dao.agoMemberDao;
+import com.bitcamp.op.member.dao.MemberDao;
 import com.bitcamp.op.member.dao.mybatisMemberDao;
 import com.bitcamp.op.member.domain.LoginInfo;
 import com.bitcamp.op.member.domain.Member;
@@ -26,7 +26,7 @@ public class MemberMyPageService {
 	//@Autowired
 	//private mybatisMemberDao dao;
 	
-	private agoMemberDao dao;
+	private MemberDao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -38,7 +38,7 @@ public class MemberMyPageService {
 		Member member = null;
 		//Connection conn = null;
 		
-		dao = template.getMapper(agoMemberDao.class);
+		dao = template.getMapper(MemberDao.class);
 
 		//try {
 			//conn = ConnectionProvider.getConnection();
