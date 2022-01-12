@@ -26,7 +26,7 @@ public class MemberListController {
 		
 		System.out.println(params);
 		
-		//model.addAttribute("listView", listService.getPageView(params));
+		model.addAttribute("listView", listService.getPageView(params));
 		
 	}
 }

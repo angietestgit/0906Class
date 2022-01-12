@@ -16,8 +16,10 @@ public class MemberDeleteService {
 	
 	public int deleteMember(int memberidx) {
 		
+		dao = template.getMapper(MemberDao.class);
 		
-		return 0;
+		
+		return dao.deleteByIdx(memberidx);
 		
 	}
 	
