@@ -79,6 +79,19 @@
 	<div id="content">
 		<h3>회원 리스트</h3>
 		<hr>
+		
+		<div id="searchBox">
+			<form>
+				<select name="searchType">
+					<option value="id">아이디</option>
+					<option value="uname">이름</option>
+					<option value="both">아이디+ 이름</option>
+				</select>
+				<input type="text" name="keyword">
+				<input type="submit" value="검색">			
+			</form>				
+		</div>
+		
 		<div id="listInfo" >
 			전체 회원 수 : ${listView.totalCount}명 , 현재 페이지: ${listView.currentPage}/${listView.pageTotalCount} 
 		</div>
@@ -121,7 +134,8 @@
 			<c:if test="${not empty listView.pageTotalCount > 0}">
 				
 				<c:forEach begin="1" end="${listView.pageTotalCount}" var="pnum">
-					<a href="list.do?p=${pnum}" class="${listView.currentPage eq pnum ? 'curpage': ''}">${pnum}</a>
+					<a href="list.do?p=${pnum}&searchType=${param.searchType}&keyword=${param.keyword}"
+					class="${listView.currentPage eq pnum ? 'curpage': ''}">${pnum}</a>
 				</c:forEach>
 			</c:if>
 
