@@ -34,8 +34,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			parameterType="hashMap"
 			resultType="int">
 			
-			#{searchType}
-			#{keyword}
 			
 			select count(*) from member
 			
@@ -70,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectList"
 			parameterType="com.bitcamp.op.member.domain.SearchParams"
 			resultType="com.bitcamp.op.member.domain.Member">
-	!-- <select id="selectList"			
+	<!-- <select id="selectList"			
 			resultType="com.bitcamp.op.member.domain.Member"> -->
 	
 	select *
@@ -119,5 +117,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			resultMap="memberResult">
 		select * from member where idx=#{no}
 	</select>
+	
+	
+	<delete id="deleteByIdx">
+		delete from member where idx=#{idx}	
+	</delete>
+	
+	
+	
 	
 </mapper>

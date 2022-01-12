@@ -1,5 +1,7 @@
 SELECT * FROM project.guestbook;
 
+select * from project.member where userid like '%test%';
+
 # insert
 INSERT INTO guestbook (subject, content, memberidx) VALUES (?, ?, ?)
 ;

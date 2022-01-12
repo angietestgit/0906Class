@@ -28,4 +28,6 @@ public interface MemberDao {
 	
 	public Member2 selectByIdx2(int idx);
 
+	public int deleteByIdx(int memberidx);
+
 }

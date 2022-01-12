@@ -83,11 +83,11 @@
 		<div id="searchBox">
 			<form>
 				<select name="searchType">
-					<option value="id">아이디</option>
-					<option value="uname">이름</option>
-					<option value="both">아이디+ 이름</option>
+					<option value="uid" ${param.searchType eq 'uid' ? 'selected' : ''}>아이디</option>
+					<option value="uname" ${param.searchType eq 'uname' ? 'selected' : ''}>이름</option>
+					<option value="both" ${param.searchType eq 'both' ? 'selected' : ''}>아이디+이름</option>
 				</select>
-				<input type="text" name="keyword">
+				<input type="text" name="keyword" value="${param.keyword}">
 				<input type="submit" value="검색">			
 			</form>				
 		</div>
@@ -153,7 +153,8 @@
 
 function delMember(idx){
 	if(confirm("해당 회원의 정보를 상제하시겠습니까?")){
-		location.href = 'delete.do?idx='+99;
+		location.href = 'delete?idx='+idx;
+		// http://localhost:8080/op/member/list
 	}
 }
 	
