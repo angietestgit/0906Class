@@ -1,5 +1,7 @@
 package com.bitcamp.op.member.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +27,22 @@ public class MemberEditController {
 			@RequestParam("idx") int idx,
 			Model model
 			){
-			model.addAttribute("member", "");						
+		
+			model.addAttribute("member", editService.getMember(idx));						
 			
 		return "/member/manager/editform";
 	}
 	
 	@PostMapping
 	public String edit(
-		EditRequest editRequest,
-		HttpServletRequest request
-		) {
+			EditRequest editRequest,
+			HttpServletRequest request
+			) throws IllegalStateException, IOException {
+		
+		System.out.println(editRequest);
 		
 		editService.editMember(editRequest, request);
+		
 		return "redirect:/member/manager/list";
 	}
-
 }

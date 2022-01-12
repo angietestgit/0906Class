@@ -123,6 +123,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from member where idx=#{idx}	
 	</delete>
 	
+	<update id="editMember"
+			parameterType="com.bitcamp.op.member.domain.EditRequest">
+		
+		update member
+		set
+		username=#{username},
+		password=#{pw}
+		
+		<if test="fileName != null">
+		, photo=#{fileName}		
+		</if>
+				
+		where idx=#{idx}
+				
+	</update>
+	
 	
 	
 	

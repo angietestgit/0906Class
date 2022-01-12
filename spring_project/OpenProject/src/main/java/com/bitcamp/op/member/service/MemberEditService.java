@@ -1,5 +1,8 @@
 package com.bitcamp.op.member.service;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -26,16 +29,49 @@ public class MemberEditService {
 	
 	public int editMember(
 			EditRequest editRequest,
-			HttpServletRequest request
-			) {
-		
+			HttpServletRequest request)
+			throws IllegalStateException, IOException {
 		
 		// 파일 저장
+		int resultCnt = 0;
+
+		// DB 관련 예외 발생 시 삭제 처리를 위한 File 객체 변수 선언
+		File newFile = null;
+
+		// 파일이 있다면 -> 파일 저장
+		if (!editRequest.getPhoto().isEmpty() && editRequest.getPhoto().getSize() > 0) {
+			// 시스템의 경로
+			String savePath = request.getSession().getServletContext().getRealPath(CommonsData.SAVE_URI);
+			String[] files = editRequest.getPhoto().getOriginalFilename().split("\\.");
+			String exet = files[files.length - 1];
+			String newFileName = System.nanoTime() + "." + exet;
+			newFile = new File(savePath, newFileName);
+			editRequest.getPhoto().transferTo(newFile);
+			editRequest.setFileName(newFileName);
+		}
 		
-		dao = template.getMapper(MemberDao.class);
+		
+		// fileName => null
+		
+		try {
+			dao = template.getMapper(MemberDao.class);
+
+			resultCnt = dao.editMember(editRequest);
+			
+		} catch (Exception e) {
+			// 예외 발생 시 저장했던 파일 삭제
+			if (newFile != null && newFile.exists()) {
+				newFile.delete();
+			}
+			e.printStackTrace();
+			throw e;
+		}
 		
 		
-		return 0;
+	
+		
+		
+		return resultCnt;
 		
 	}
 	

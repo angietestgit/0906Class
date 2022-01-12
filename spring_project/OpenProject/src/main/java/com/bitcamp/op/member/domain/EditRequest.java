@@ -10,6 +10,7 @@ public class EditRequest {
 	private String username;
 	private String oldfile;
 	private MultipartFile photo;
+	private String fileName;
 
 	public int getIdx() {
 		return idx;
@@ -59,11 +60,18 @@ public class EditRequest {
 		this.photo = photo;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	@Override
 	public String toString() {
 		return "EditRequest [idx=" + idx + ", userid=" + userid + ", pw=" + pw + ", username=" + username + ", oldfile="
 				+ oldfile + ", photo=" + photo.getOriginalFilename() + "]";
 	}
-	
-	
+
 }
