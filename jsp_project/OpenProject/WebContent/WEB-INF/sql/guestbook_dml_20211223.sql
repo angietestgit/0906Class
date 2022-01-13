@@ -102,3 +102,5 @@ delete from project.guestbook where idx=11 and memberidx=11;
 delete from guestbook where idx=? and memberidx=?;
 
 
+select * from project.member where uwerid like '%cool%';
+
