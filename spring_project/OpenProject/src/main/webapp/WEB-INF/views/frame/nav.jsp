@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<nav>
-		<ul>
+<!-- 	<ul>
 			<li><a href="${pageContext.request.contextPath}/member/reg">회원 가입</a></li>
 			<li><a href="${pageContext.request.contextPath}/member/manager/list">회원 리스트</a></li>
 			<li><a href="${pageContext.request.contextPath}/member/my/mypage">마이 페이지</a></li>
@@ -22,5 +22,5 @@
 			
 			
 		</ul>
-		
+-->	
 	</nav>

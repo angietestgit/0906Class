@@ -1,24 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<header>
-		<h1>Open Project</h1>
-		<div id="loginInfoArea">
-			<c:if test="${empty loginInfo }">
-			<a href="${pageContext.request.contextPath}/member/login">login</a>
-			</c:if>
-			
-			<c:if test="${not empty loginInfo}">
-			<table>
-				<tr>
-					<td><img src="${pageContext.request.contextPath}/uploadfile/${loginInfo.photo}"></td>
-					<td>
-					${loginInfo.userName}(${loginInfo.userId})
-					<a href="${pageContext.request.contextPath}/member/logout">logout</a>
-					</td>
-				</tr>
-			</table>
-			</c:if>
-		</div>
-	</header>	
-    
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+
+<%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css">
+
+
+
+
+</head>
+<body>
+
+	<!-- 해더 시작 -->
+	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+	<!-- 해더 끝 -->
+
+	<!-- 네비게이션 시작 -->
+	<%@ include file="/WEB-INF/views/frame/nav.jsp"%>
+	<!-- 네비게이션 끝 -->
+
+
+
+
+
+
+<form class="form-signin" method="post">
+  <input type="hidden" name="url" value="${param.referer}">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  
+  <label for="inputEmail" class="sr-only">Email address</label>
+  <input type="email" id="inputEmail"  name="userid" value="${cookie.saveId != null ? cookie.saveId.value : ''}"
+  class="form-control" placeholder="Email address" required autofocus>
+  
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" name="pw" class="form-control" placeholder="Password" required>
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox"  name="saveid" value="on" ${cookie.saveId != null ? 'checked' : ''}> Remember EMAIL
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  
+</form>
+
+
+
+
+
+	<!-- content 시작 -->
+	
+	<!-- content 끝 -->
+
+
+	<!-- Javascript 추가 -->
+	<%@ include file="/WEB-INF/views/frame/footerset.jsp" %>
+
+</body>
+</html>
