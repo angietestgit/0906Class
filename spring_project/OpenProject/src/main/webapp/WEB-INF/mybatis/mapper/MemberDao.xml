@@ -33,29 +33,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectTotalCount"
 			parameterType="hashMap"
 			resultType="int">
-			
-			
+									
 			select count(*) from member
-			
-		<where>	
-		
-			<if test="searchType != null">
-				<if test="searchType == 'uid'">
-					<include refid="searchId"/>
+			<where>
+				<if test="searchType != null"> 
+					<if test="searchType == 'uid'">
+						<include refid="searchId"/>
+					</if>
+					<if test="searchType == 'uname'">
+						<include refid="searchName"/>
+					</if>
+					<if test="searchType == 'both'">
+						<include refid="searchId"/>
+						<include refid="searchName"/>
+					</if>
 				</if>
-				<if test="searchType == 'uname'">
-					<include refid="searchName"/>
-				</if>
-				<if test="searchType == 'both'">
-					<include refid="searchId"/>
-					<include refid="searchName"/>
-				</if>
-			</if>	
-		</where>
-	
+			</where>
 	</select>
 	
-	<sql id="searchId">
+	<sql id="searchId"> 
 		or userid like concat('%', #{keyword}, '%')
 	</sql>
 	
@@ -65,19 +61,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
+	
+	
 	<select id="selectList"
 			parameterType="com.bitcamp.op.member.domain.SearchParams"
 			resultType="com.bitcamp.op.member.domain.Member">
 	<!-- <select id="selectList"			
 			resultType="com.bitcamp.op.member.domain.Member"> -->
 	
-	select *
+	select * 
 	from member
 	
 	<where>
 		<if test="searchType != null">
 		
-			<if test="searchType == 'uid'">	
+			<if test="searchType == 'uid'">
 				<include refid="searchId"/>
 			</if>
 			<if test="searchType == 'uname'">
@@ -87,8 +85,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<include refid="searchId"/>
 				<include refid="searchName"/>
 			</if>
-			
-		</if>	
+		
+		</if>
 	</where>
 	
 	 order by idx desc limit #{index}, #{count}
@@ -118,28 +116,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from member where idx=#{no}
 	</select>
 	
-	
 	<delete id="deleteByIdx">
-		delete from member where idx=#{idx}	
+		delete from member where idx=#{idx}
 	</delete>
 	
 	<update id="editMember"
 			parameterType="com.bitcamp.op.member.domain.EditRequest">
-		
+	
 		update member
-		set
+		set 
 		username=#{username},
 		password=#{pw}
 		
 		<if test="fileName != null">
 		, photo=#{fileName}		
-		</if>
-				
+		</if> 
+		
 		where idx=#{idx}
-				
+	
 	</update>
 	
 	
-	
-	
+	<select id="selectCountByUesrId"
+			resultType="int"
+	>
+		select count(*) from member where userid=#{id}
+	</select>
+
 </mapper>

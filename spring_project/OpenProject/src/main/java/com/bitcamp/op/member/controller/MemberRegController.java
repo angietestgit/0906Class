@@ -16,7 +16,7 @@ import com.bitcamp.op.member.domain.MemberRegRequest;
 import com.bitcamp.op.member.service.MemberRegService;
 
 @Controller
-@RequestMapping("/member/reg")
+@RequestMapping("/member/reg") // http://localhost:8080/op/member/reg
 public class MemberRegController {
 	
 	@Autowired
@@ -34,6 +34,9 @@ public class MemberRegController {
 			HttpServletRequest request
 			) throws IllegalStateException, IOException, SQLException {
 		//System.out.println(regRequest);
+		
+		
+		
 		model.addAttribute("result", regService.insertMember(regRequest, request));
 		
 		System.out.println("@Controller: idx => " + regRequest.getIdx());
