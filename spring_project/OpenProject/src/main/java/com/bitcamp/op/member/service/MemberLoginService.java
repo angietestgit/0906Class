@@ -49,10 +49,14 @@ public class MemberLoginService {
 			//member = dao.selectByIdPw(conn, loginRequest.getUserid(), loginRequest.getPw());
 			//member = dao.selectByIdPw(loginRequest.getUserid(), loginRequest.getPw());
 			//member = dao.selectByIdPw(loginRequest.getLoginParams());
-			member = dao.selectByIdPw(loginRequest.getUserid(), loginRequest.getPw());
+			//member = dao.selectByIdPw(loginRequest.getUserid(), loginRequest.getPw());
 
+			member = dao.selectById(loginRequest.getUserid());
+								
 			if (member == null) {
 				throw new LoginInvalidException("아이디 또는 비밀번호가 틀립니다.");
+			} else if( ) {
+				// 사용자가 입력한 비밀번호와 Member 객체가 가지고 있는 비밀번호를 확인
 			}
 
 			// 로그인 처리와 viewName 정의, 쿠키 처리

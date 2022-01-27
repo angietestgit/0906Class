@@ -53,6 +53,26 @@
 		</interceptor>
 	</interceptors>
 
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance" xsi:schemalocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+p:host="smtp.gmail.com"
+p:port="25"
+p:defaultencoding="UTF-8"></bean>
+ <bean id="templateMailMessage" class="org.springframework.mail.SimpleMailMessage"
+p:from=“jin.ryoo@gmail.com"
+p:subject="회원 가입을 환영합니다.">
+ </bean>
+
+ <bean id="simpleMailMessageTest2" class="SimpleMailMessageTest2"
+p:mailsender-ref="mailSender"
+p:templatemailmessage-ref="templateMailMessage">
+ </bean>
+</beans>
+
+
 
 	<context:component-scan
 		base-package="com.bitcamp.op" />

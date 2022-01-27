@@ -1,5 +1,6 @@
 package com.bitcamp.op.member.service;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,6 +34,10 @@ public class MemberRegService {
 	private SqlSessionTemplate template;
 	
 	
+	@Autowired
+	private Bctypto
+	
+	
 	public int insertMember(MemberRegRequest regRequest, HttpServletRequest request)
 			throws IllegalStateException, IOException, SQLException {
 
@@ -56,6 +61,13 @@ public class MemberRegService {
 			regRequest.setFileName(newFileName);
 		}
 
+		
+		// 비밀번호 암호화
+		String bPw = encoder.encode(regRequest.getPw());
+		System.out.println("암호문: "+bPw);
+		System.out.println("암호문 사이즈: "+ bPw.length());
+		
+		
 		// DAO 를 이용해서 데이터 베이스 처리
 		//Connection conn = null;
 
@@ -70,7 +82,8 @@ public class MemberRegService {
 
 			//resultCnt = dao.insertMember(regRequest);			
 			//resultCnt = dao.insert(regRequest);
-			resultCnt = dao.insertMember(regRequest);
+			
+			// resultCnt = dao.insertMember(regRequest);
 			
 			
 			System.out.println("idx => " + regRequest.getIdx());
