@@ -62,9 +62,8 @@ p:host="smtp.gmail.com"
 p:port="25"
 p:defaultencoding="UTF-8"></bean>
  <bean id="templateMailMessage" class="org.springframework.mail.SimpleMailMessage"
-p:from=“jin.ryoo@gmail.com"
-p:subject="회원 가입을 환영합니다.">
- </bean>
+p:from=“gydms0136@gmail.com"
+p:subject="회원 가입을 환영합니다."></bean>
 
  <bean id="simpleMailMessageTest2" class="SimpleMailMessageTest2"
 p:mailsender-ref="mailSender"
