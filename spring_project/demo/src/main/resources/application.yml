@@ -1,6 +1,3 @@
-server:
-  port: 8083
-  
 spring:
  datasource:
   driver-class-name: com.mysql.cj.jdbc.Driver
@@ -8,5 +5,8 @@ spring:
   username: bit
   password: bit
 
-  mybatis:
-    mapper-locations: com/bitcamp/demo/member/mapper/*.xml
+mybatis:
+  mapper-locations: com/example/demo/member/mapper/*.xml
+  
+server:
+  port: 8083
