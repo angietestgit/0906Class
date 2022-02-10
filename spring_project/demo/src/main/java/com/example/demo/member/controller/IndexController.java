@@ -3,6 +3,7 @@ package com.example.demo.member.controller;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +17,7 @@ public class IndexController {
 
 	private MemberDao dao;
 	
+	@Autowired
 	private SqlSessionTemplate template;
 	
 	@RequestMapping("/")
